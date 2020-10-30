@@ -21,7 +21,7 @@ namespace JapanoriSystem.Controllers
             return View(db.tbProduto.ToList());
         }
 
-        // GET: Produto/Details/5
+        // GET: Produto/Details/id
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -43,11 +43,10 @@ namespace JapanoriSystem.Controllers
         }
 
         // POST: Produto/Create
-        // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
-        // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProdutoID,Nome,Desc,Preco,Status")] Produto produto)
+        public ActionResult Create([Bind(Include = "ProdutoID,Nome,Desc,Preco,EstoqueItens")] Produto produto)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +58,7 @@ namespace JapanoriSystem.Controllers
             return View(produto);
         }
 
-        // GET: Produto/Edit/5
+        // GET: Produto/Edit/id
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,9 +73,8 @@ namespace JapanoriSystem.Controllers
             return View(produto);
         }
 
-        // POST: Produto/Edit/5
-        // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
-        // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Produto/Edit/id
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProdutoID,Nome,Desc,Preco,Status")] Produto produto)
@@ -90,7 +88,7 @@ namespace JapanoriSystem.Controllers
             return View(produto);
         }
 
-        // GET: Produto/Delete/5
+        // GET: Produto/Delete/id
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +103,7 @@ namespace JapanoriSystem.Controllers
             return View(produto);
         }
 
-        // POST: Produto/Delete/5
+        // POST: Produto/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

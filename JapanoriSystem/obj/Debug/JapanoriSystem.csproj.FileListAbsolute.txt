@@ -153,6 +153,6 @@ C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\Japanor
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.csproj.CopyComplete
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.dll
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.pdb
-C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.csprojAssemblyReference.cache
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.InitialCreate.resources
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.csproj.GenerateResource.cache
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.AlterandoComanda.resources

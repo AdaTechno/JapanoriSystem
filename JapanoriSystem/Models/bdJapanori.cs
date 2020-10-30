@@ -28,10 +28,12 @@ namespace JapanoriSystem.Models
         [DisplayName("Situação")]
         public string Situacao { get; set; }
 
+        [DisplayName("Quantidade de Produtos")]
         public virtual ICollection<ComandaProduto> Produtos { get; set; }
 
         [DisplayName("Status")]
         public string Status { get; set; }
+        
 
     }
 

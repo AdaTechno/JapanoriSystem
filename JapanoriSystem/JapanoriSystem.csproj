@@ -254,6 +254,10 @@
     <Compile Include="Migrations\202010301304180_InitialCreate.designer.cs">
       <DependentUpon>202010301304180_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010301411297_AlterandoComanda.cs" />
+    <Compile Include="Migrations\202010301411297_AlterandoComanda.designer.cs">
+      <DependentUpon>202010301411297_AlterandoComanda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\bdJapanori.cs" />
     <Compile Include="Models\FuncionarioLoginSessao.cs" />
@@ -330,6 +334,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010301304180_InitialCreate.resx">
       <DependentUpon>202010301304180_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010301411297_AlterandoComanda.resx">
+      <DependentUpon>202010301411297_AlterandoComanda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
