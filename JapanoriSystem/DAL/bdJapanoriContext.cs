@@ -9,6 +9,7 @@ namespace JapanoriSystem.DAL
 
         public bdJapanoriContext() : base()
         {
+            Database.SetInitializer<bdJapanoriContext>(new DropCreateDatabaseIfModelChanges<bdJapanoriContext>());
         }
 
         public DbSet<Comanda> tbComanda { get; set; }

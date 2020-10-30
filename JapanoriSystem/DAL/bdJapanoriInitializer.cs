@@ -7,9 +7,9 @@ using JapanoriSystem.Models;
 
 namespace JapanoriSystem.DAL
 {
-    public class bdJapanoriInitializer : DropCreateDatabaseIfModelChanges<bdJapanoriContext>
+    /*public class bdJapanoriInitializer : DropCreateDatabaseIfModelChanges<bdJapanoriContext>
     {
-        /*protected override void Seed(bdJapanoriContext context)
+        protected override void Seed(bdJapanoriContext context)
         {
             // Insert de Comandas no banco de dados
             var comandas = new List<Comanda>
@@ -75,6 +75,24 @@ namespace JapanoriSystem.DAL
             };
             produtoitens.ForEach(s => context.tbProdutoEstoque.Add(s));
             context.SaveChanges();
-        }*/
-    }
+
+            // Insert de Funcionários
+            var funcionarios = new List<Funcionario>
+            {
+                new Funcionario{FuncionarioID=1450,
+                    Nome="Gustavo",
+                    Sobrenome="Pott Delfino",
+                    Cargo="Gerente",
+                    CPF="111.222.333-50",
+                    Endereco="Av. Raimundo, 555",
+                    Cep="33300-123",
+                    EmailCorp="gustavo@japanori.com.br",
+                    Senha="japanori123",
+                    Perm="Admin",
+                    Status="On"}
+            };
+            funcionarios.ForEach(s => context.tbFuncionario.Add(s));
+            context.SaveChanges();
+        }
+    }*/
 }

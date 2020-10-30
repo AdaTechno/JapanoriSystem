@@ -1,15 +1,23 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+using System.Data.Entity.Core.Mapping;
+using System.Data.Entity.Core.Objects.DataClasses;
+using System.Data.Entity.Infrastructure.MappingViews;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Web;
 
 namespace JapanoriSystem.Models
 {
     // Relacionamento Comanda - Produto - Estoque
 
+    
     [Table("tbComanda")]
     public class Comanda
     {
@@ -50,10 +58,8 @@ namespace JapanoriSystem.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ComandaProdutoID { get; set; }
 
-        [ForeignKey("Comanda")]
         public int ComandaID { get; set; }
 
-        [ForeignKey("Produto")]
         public int ProdutoID { get; set; }
 
         public virtual Comanda Comanda { get; set; }
@@ -73,7 +79,7 @@ namespace JapanoriSystem.Models
         public int EstoqueID { get; set; }
         public string Nome { get; set; }
         public int Quantidade { get; set; }
-        public TipoQuantidade? TipoQuantidade { get; set; }
+        public TipoQuantidade TipoQuantidade { get; set; }
         public DateTime UltimoCarregamento { get; set; }
         public string Status { get; set; }
     }

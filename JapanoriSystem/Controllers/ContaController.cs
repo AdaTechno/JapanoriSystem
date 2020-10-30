@@ -24,34 +24,32 @@ namespace JapanoriSystem.Controllers
         [HttpPost]
         public ActionResult Login(Funcionario login)
         {
-            if (ModelState.IsValid)
+            var r = getuser(login.EmailCorp);
+            if (r == null)
             {
-                var r = getuser(login.EmailCorp);
-                if (r == null)
+                ViewBag.msgLogar = "Usuário não encontrado. Verifique o nome do usuário e a senha!";
+                return View();
+            }
+            else
+            {
+                if (r.EmailCorp == login.EmailCorp && r.Senha == login.Senha)
+                {
+                    Session["emailUsuarioLogado"] = r.EmailCorp.ToString();
+                    Session["usuarioLogado"] = r.Nome.ToString();
+                    Session["senhaLogado"] = r.Senha.ToString();
+                    Session["sobrenomeLogado"] = r.Sobrenome.ToString();
+                    Session["permUsuarioLogado"] = r.Perm.ToString();
+                    Session["nomeCompleto"] = r.NomeCompleto.ToString();
+                    FormsAuthentication.SetAuthCookie(r.EmailCorp, false);
+                    return RedirectToAction("Inicio", "Home");
+                }
+                else
                 {
                     ViewBag.msgLogar = "Usuário não encontrado. Verifique o nome do usuário e a senha!";
                     return View();
                 }
-                else
-                {
-                    if (r.EmailCorp == login.EmailCorp && r.Senha == login.Senha)
-                    {
-                        Session["emailUsuarioLogado"] = r.EmailCorp.ToString();
-                        Session["usuarioLogado"] = r.Nome.ToString();
-                        Session["senhaLogado"] = r.Senha.ToString();
-                        Session["sobrenomeLogado"] = r.Sobrenome.ToString();
-                        Session["permUsuarioLogado"] = r.Perm.ToString();
-                        FormsAuthentication.SetAuthCookie(r.EmailCorp, false);
-                        return RedirectToAction("Inicio", "Home");
-                    }
-                    else
-                    {
-                        ViewBag.msgLogar = "Usuário não encontrado. Verifique o nome do usuário e a senha!";
-                        return View();
-                    }
-                }
             }
-            return View();
+
 
 
         }
@@ -62,9 +60,9 @@ namespace JapanoriSystem.Controllers
 
             if (res != null && res.Count > 0 && res[0].Status != "Off")
             {
-                
-                    return (Funcionario)res[0];
-                
+
+                return (Funcionario)res[0];
+
             }
             else
             {

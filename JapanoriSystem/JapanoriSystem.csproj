@@ -250,6 +250,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010301304180_InitialCreate.cs" />
+    <Compile Include="Migrations\202010301304180_InitialCreate.designer.cs">
+      <DependentUpon>202010301304180_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\bdJapanori.cs" />
     <Compile Include="Models\FuncionarioLoginSessao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -292,9 +297,7 @@
     <Content Include="Views\Conta\Login.cshtml" />
     <Content Include="Views\Conta\Logout.cshtml" />
     <Content Include="Views\Reserva\Cadastro.cshtml" />
-    <Content Include="Views\Produto\Cadastro.cshtml" />
     <Content Include="Views\Reserva\Consulta.cshtml" />
-    <Content Include="Views\Produto\Consulta.cshtml" />
     <Content Include="Views\Comanda\Create.cshtml" />
     <Content Include="Views\Comanda\Delete.cshtml" />
     <Content Include="Views\Comanda\Details.cshtml" />
@@ -302,6 +305,11 @@
     <Content Include="Views\Comanda\Index.cshtml" />
     <Content Include="Views\Fornecedor\Cadastro.cshtml" />
     <Content Include="Views\Conta\semAcesso.cshtml" />
+    <Content Include="Views\Produto\Create.cshtml" />
+    <Content Include="Views\Produto\Delete.cshtml" />
+    <Content Include="Views\Produto\Details.cshtml" />
+    <Content Include="Views\Produto\Edit.cshtml" />
+    <Content Include="Views\Produto\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -318,6 +326,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202010301304180_InitialCreate.resx">
+      <DependentUpon>202010301304180_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

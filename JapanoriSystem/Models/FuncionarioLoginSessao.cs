@@ -20,6 +20,14 @@ namespace JapanoriSystem.Models
         public int FuncionarioID { get; set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
+        [DisplayName("Nome Completo")]
+        public string NomeCompleto
+        {
+            get
+            {
+                return Nome + " " + Sobrenome;
+            }
+        }
         public string Cargo { get; set; }
         public string CPF { get; set; }
         public string Endereco { get; set; }

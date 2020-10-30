@@ -45,7 +45,6 @@ namespace JapanoriSystem.Controllers
         // POST: Comanda/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Situacao,Status")] Comanda comanda)
