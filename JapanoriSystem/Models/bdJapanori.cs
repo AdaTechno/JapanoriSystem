@@ -10,10 +10,6 @@ namespace JapanoriSystem.Models
 {
     // Relacionamento Comanda - Produto - Estoque
 
-    public class bdJapanori
-    {
-    }
-
     [Table("tbComanda")]
     public class Comanda
     {
@@ -75,7 +71,6 @@ namespace JapanoriSystem.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EstoqueID { get; set; }
-
         public string Nome { get; set; }
         public int Quantidade { get; set; }
         public TipoQuantidade? TipoQuantidade { get; set; }

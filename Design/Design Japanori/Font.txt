@@ -1,0 +1,10 @@
+	-=Font=-
+Gemunu Libre
+
+	-=Weight=-
+Logo, Títulos, Destaque+:
+	500
+Botões, Subtítulos, etc:
+	400
+Demais textos:
+	300

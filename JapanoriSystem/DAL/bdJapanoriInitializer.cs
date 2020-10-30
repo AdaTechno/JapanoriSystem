@@ -9,7 +9,7 @@ namespace JapanoriSystem.DAL
 {
     public class bdJapanoriInitializer : DropCreateDatabaseIfModelChanges<bdJapanoriContext>
     {
-        protected override void Seed(bdJapanoriContext context)
+        /*protected override void Seed(bdJapanoriContext context)
         {
             // Insert de Comandas no banco de dados
             var comandas = new List<Comanda>
@@ -75,6 +75,6 @@ namespace JapanoriSystem.DAL
             };
             produtoitens.ForEach(s => context.tbProdutoEstoque.Add(s));
             context.SaveChanges();
-        }
+        }*/
     }
 }

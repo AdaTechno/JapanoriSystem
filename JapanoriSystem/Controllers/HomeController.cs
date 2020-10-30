@@ -8,9 +8,21 @@ namespace JapanoriSystem.Controllers
 {
     public class HomeController : Controller
     {
+        
         public ActionResult Inicio()
         {
-            return View();
+            if ((Session["emailUsuarioLogado"] == null) || (Session["senhaLogado"] == null) || (Session["usuarioLogado"] == null))
+            {
+                return RedirectToAction("semAcesso", "Conta");
+            }
+            else
+            {
+                ViewBag.nomeUsuarioLog = Session["usuarioLogado"];
+                ViewBag.sobrenomeLog = Session["sobrenomeLogado"];
+                ViewBag.emailUsuarioLog = Session["emailUsuarioLogado"];
+                ViewBag.permUsuarioLog = Session["permUsuarioLogado"];
+                return View();
+            }
         }
 
        

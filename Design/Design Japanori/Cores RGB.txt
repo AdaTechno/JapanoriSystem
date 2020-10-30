@@ -1,0 +1,37 @@
+	-=Vermelho Principal=-
+219,33,33,1
+
+	-=Botões Vermelhos Gradient Para o Preto=-
+Linear Gradient
+243,41,41,1
+186,16,16,1
+
+	-=Botões Vermelhos Gradient Todo Vermelho=-
+Linear Gradient
+221,35,35,1
+209,32,32,1
+226,34,34,1
+
+	-=Botões Vermelhos Escuro Gradient=-
+Linear Gradient
+166,28,28,1
+100,16,16,1
+
+	-=Botões Vermelhos+++ Lisos=-
+219,33,33,1
+	-=Botões Vermelhos++ Lisos=-
+200,27,27,1
+	-=Botões Vermelhos+ Lisos=-
+173,24,24,1
+	-=Botões Vermelhos Lisos=-
+146,21,21,1
+
+	-=Fundo Escuro Com Imagem=-
+Radial Gradient
+0,0,0,0,8
+11,11,11,0,86
+11,11,11,0,87
+11,11,11,0,9
+
+	-=Fundo Claro Com Imagem=-
+0,0,0,0,56

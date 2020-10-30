@@ -8,12 +8,13 @@ namespace JapanoriSystem.Controllers
 {
     public class ProdutoController : Controller
     {
-        // GET: Produto
+        
         public ActionResult Cadastro()
         {
             return View();
         }
 
+ 
         public ActionResult Consulta()
         {
             return View();
