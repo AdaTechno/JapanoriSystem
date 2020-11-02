@@ -257,18 +257,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010301304180_InitialCreate.cs" />
-    <Compile Include="Migrations\202010301304180_InitialCreate.designer.cs">
-      <DependentUpon>202010301304180_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202011021828526_init.cs" />
+    <Compile Include="Migrations\202011021828526_init.designer.cs">
+      <DependentUpon>202011021828526_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010301411297_AlterandoComanda.cs" />
-    <Compile Include="Migrations\202010301411297_AlterandoComanda.designer.cs">
-      <DependentUpon>202010301411297_AlterandoComanda.cs</DependentUpon>
+    <Compile Include="Migrations\202011021847582_AlterColumn.cs" />
+    <Compile Include="Migrations\202011021847582_AlterColumn.designer.cs">
+      <DependentUpon>202011021847582_AlterColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\bdJapanori.cs" />
     <Compile Include="Models\FuncionarioLoginSessao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AssignedProdutoData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -328,6 +329,7 @@
     <Content Include="Views\Funcionario\Edit.cshtml" />
     <Content Include="Views\Funcionario\Index.cshtml" />
     <Content Include="Views\Conta\Perfil.cshtml" />
+    <Content Include="Views\Comanda\Inserir_1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,11 +349,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202010301304180_InitialCreate.resx">
-      <DependentUpon>202010301304180_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011021828526_init.resx">
+      <DependentUpon>202011021828526_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010301411297_AlterandoComanda.resx">
-      <DependentUpon>202010301411297_AlterandoComanda.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011021847582_AlterColumn.resx">
+      <DependentUpon>202011021847582_AlterColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

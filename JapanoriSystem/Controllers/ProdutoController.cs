@@ -21,9 +21,9 @@ namespace JapanoriSystem.Controllers
         {
             //      Cadeia de objetos para definir a "current" Ordem da listagem das comandas
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.CodSortParm = String.IsNullOrEmpty(sortOrder) ? "" : "cod_cre"; // objeto que organiza a lista em ordem do código
-            ViewBag.NomeSortParm = String.IsNullOrEmpty(sortOrder) ? "" : "nome_cre"; // objeto que organiza a lista em ordem da situacao
-            ViewBag.PriceSortParm = String.IsNullOrEmpty(sortOrder) ? "" : "preco_decre"; // objeto que organiza a lista em ordem de preço
+            ViewBag.CodSortParm = String.IsNullOrEmpty(sortOrder) ? "cod_cre" : ""; // objeto que organiza a lista em ordem do código
+            ViewBag.NomeSortParm = String.IsNullOrEmpty(sortOrder) ? "nome_cre" : ""; // objeto que organiza a lista em ordem da situacao
+            ViewBag.PriceSortParm = String.IsNullOrEmpty(sortOrder) ? "preco_decre" : ""; // objeto que organiza a lista em ordem de preço
 
             if (searchString != null)
             {
@@ -39,8 +39,10 @@ namespace JapanoriSystem.Controllers
                            select p;
             if (!String.IsNullOrEmpty(searchString))
             {
-                produtos = produtos.Where(p => p.ProdutoID.ToString().Contains(searchString));
-                //produtos = produtos.Where(p => p.Nome.ToString().Contains(searchString));
+                produtos = produtos.Where(p => p.ProdutoID.ToString().Contains(searchString)
+                    || p.Nome.ToString().Contains(searchString)
+                    || p.Desc.ToString().Contains(searchString));
+
             }
             switch (sortOrder)
             {
@@ -85,7 +87,7 @@ namespace JapanoriSystem.Controllers
         }
 
         // POST: Produto/Create
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProdutoID,Nome,Desc,Preco,EstoqueItens")] Produto produto)
@@ -116,7 +118,7 @@ namespace JapanoriSystem.Controllers
         }
 
         // POST: Produto/Edit/id
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProdutoID,Nome,Desc,Preco,Status")] Produto produto)

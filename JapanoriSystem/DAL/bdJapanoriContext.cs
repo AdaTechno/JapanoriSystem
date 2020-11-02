@@ -13,9 +13,7 @@ namespace JapanoriSystem.DAL
         }
 
         public DbSet<Comanda> tbComanda { get; set; }
-        public DbSet<ComandaProduto> tbComandaProduto { get; set; }
         public DbSet<Produto> tbProduto { get; set; }
-        public DbSet<ProdutoEstoque> tbProdutoEstoque { get; set; }
         public DbSet<Estoque> tbEstoque { get; set; }
         public DbSet<Funcionario> tbFuncionario { get; set; }
 

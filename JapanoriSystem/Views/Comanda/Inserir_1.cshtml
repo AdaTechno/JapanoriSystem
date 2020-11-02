@@ -1,0 +1,29 @@
+﻿@model IEnumerable<JapanoriSystem.Models.Comanda>
+
+@{
+    ViewBag.Title = "Inserir_1";
+}
+
+<h2>Inserir_1</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.ActionLink("Select", "Inserir_1", new { id=item.ID }) |
+            @Html.ActionLink("Inserir", "Inserir_2", new { id=item.ID }) |
+        </td>
+    </tr>
+}
+
+</table>

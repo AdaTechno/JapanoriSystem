@@ -18,7 +18,7 @@
     <table>
         <tr>
             <th>Código da Comanda: </th>
-            <th>@Html.TextBox("SearchString", "", new { @class = "form-control" })</th>
+            <th>@Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })</th>
             <th><input type="submit" value="Search" class="btn btn-default" /></th>
         </tr>
     </table>
@@ -39,7 +39,9 @@
             @Html.ActionLink("Valor Total", "Index", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
     </tr>
+    @{
 
+    }
     @foreach (var item in Model)
     {
         <tr>
@@ -56,14 +58,8 @@
                 @Html.DisplayFor(modelItem => parameterValue)
             </td>
             <td>
-                @{
-                    JapanoriSystem.DAL.bdJapanoriContext db = new JapanoriSystem.DAL.bdJapanoriContext();
-
-
-                    var getProdutos = db.tbComandaProduto.Where(x => x.ComandaID == item.ID).ToList();
-                    var total = getProdutos.Sum(x => x.Produto.Preco);
-                    JapanoriSystem.Models.ComandaProduto arm = new JapanoriSystem.Models.ComandaProduto();
-
+                @{ 
+                    string total = item.Produtos.Sum(x => x.Preco).ToString();
                 }
                 @Html.DisplayFor(modelItem => total)
             </td>

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Ajax.Utilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -28,14 +29,15 @@ namespace JapanoriSystem.Models
         [DisplayName("Situação")]
         public string Situacao { get; set; }
 
-        [DisplayName("Quantidade de Produtos")]
-        public virtual ICollection<ComandaProduto> Produtos { get; set; }
+        [DisplayName("Valor Total")]
+        public double PrecoTotal { get; set; }
 
         [DisplayName("Status")]
         public string Status { get; set; }
 
-        [DisplayName("Valor Total")]
-        public double PrecoTotal { get; set; }
+        [DisplayName("Produtos")]
+        public virtual ICollection<Produto> Produtos { get; set; }
+
     }
 
     [Table("tbProduto")]
@@ -49,60 +51,40 @@ namespace JapanoriSystem.Models
         [DisplayName("Valor Unitário")]
         public double Preco { get; set; }
 
-        [DisplayName("Itens do Estoque")]
-        public virtual ICollection<ProdutoEstoque> EstoqueItens { get; set; }
         public string Status { get; set; }
 
+        [DisplayName("Itens do Estoque")]
+        public virtual ICollection<Estoque> EstoqueItens { get; set; }
+
+        public virtual ICollection<Comanda> Comandas { get; set; }
+
     }
 
-    [Table("tbComandaProduto")]
-    public class ComandaProduto
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ComandaProdutoID { get; set; }
-
-        public int ComandaID { get; set; }
-
-        public int ProdutoID { get; set; }
-
-        public virtual Comanda Comanda { get; set; }
-        public virtual Produto Produto { get; set; }
-    }
-
-    public enum TipoQuantidade
+    /*public enum TipoQuantidade
     {
         Unidades, Quilos, Gramas, Miligramas, Litros, Mililitros, Centímetros, Metros
-    }
+    }*/
 
     [Table("tbEstoque")]
     public class Estoque
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int EstoqueID { get; set; }
+        public int ItemID { get; set; }
         public string Nome { get; set; }
         public int Quantidade { get; set; }
-        public TipoQuantidade TipoQuantidade { get; set; }
+        public string TipoQuantidade { get; set; }
+        public string Categoria { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayName("Último carregamento")]
         public DateTime UltimoCarregamento { get; set; }
+        public string Obs { get; set; }
         public string Status { get; set; }
+
+        public virtual ICollection<Produto> Produtos { get; set; }
     }
 
-    [Table("tbProdutoEstoque")]
-    public class ProdutoEstoque
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ProdutoEstoqueID { get; set; }
-
-        [ForeignKey("Produto")]
-        public int ProdutoID { get; set; }
-
-        [ForeignKey("Estoque")]
-        public int EstoqueID { get; set; }
-
-        public virtual Produto Produto { get; set; }
-        public virtual Estoque Estoque { get; set; }
-    }
 
 }
