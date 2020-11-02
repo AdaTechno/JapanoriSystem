@@ -32,7 +32,7 @@
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Reserva", "Cadastro", "Reserva")</li>
                                 <li>@Html.ActionLink("Produto", "Create", "Produto")</li>
-                                <li><a href="#">Funcionário</a></li>
+                                <li>@Html.ActionLink("Funcionário", "Create", "Funcionario")</li>
                                 <li><a href="#">Fornecedor</a></li>
                             </ul>
                         </li>
@@ -44,7 +44,7 @@
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Reservas", "Consulta", "Reserva")</li>
                                 <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
-                                <li><a href="#">Funcionário</a></li>
+                                <li>@Html.ActionLink("Funcionário", "Index", "Funcionario")</li>
                                 <li><a href="#">Fornecedor</a></li>
                                 <li><a href="#">Cardápio</a></li>
                             </ul>
@@ -113,7 +113,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - Japanori ASP.NET</p>
         </footer>
     </div>
 

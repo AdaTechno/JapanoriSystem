@@ -1,26 +1,43 @@
-﻿@model IEnumerable<JapanoriSystem.Models.Comanda>
+﻿@model PagedList.IPagedList<JapanoriSystem.Models.Comanda>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Comandas";
 }
 
-<h2>Index</h2>
+<h2>Comandas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar Nova", "Create")
 </p>
+<br />
+@using (Html.BeginForm("Index", "Comanda", FormMethod.Get))
+{
+    <table>
+        <tr>
+            <th>Código da Comanda: </th>
+            <th>@Html.TextBox("SearchString", "", new { @class = "form-control" })</th>
+            <th><input type="submit" value="Search" class="btn btn-default" /></th>
+        </tr>
+    </table>
+}
+<br />
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ID)
+            @Html.ActionLink("Código", "Index", new { sortOrder = ViewBag.CodSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Situacao)
+            @Html.ActionLink("Situação", "Index", new { sortOrder = ViewBag.SitSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Produtos)
+            Quantidade de Produtos
         </th>
-        <th></th>
+        <th>
+            @Html.ActionLink("Valor Total", "Index", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -33,14 +50,34 @@
                 @Html.DisplayFor(modelItem => item.Situacao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Produtos.Count)
+                @{
+                    string parameterValue = item.Produtos.Count().ToString();
+                }
+                @Html.DisplayFor(modelItem => parameterValue)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @{
+                    JapanoriSystem.DAL.bdJapanoriContext db = new JapanoriSystem.DAL.bdJapanoriContext();
+
+
+                    var getProdutos = db.tbComandaProduto.Where(x => x.ComandaID == item.ID).ToList();
+                    var total = getProdutos.Sum(x => x.Produto.Preco);
+                    JapanoriSystem.Models.ComandaProduto arm = new JapanoriSystem.Models.ComandaProduto();
+
+                }
+                @Html.DisplayFor(modelItem => total)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.ID })
             </td>
         </tr>
     }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -1,0 +1,111 @@
+﻿@model JapanoriSystem.Models.Funcionario
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Funcionario &nbsp; @Html.DisplayFor(model => model.FuncionarioID)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sobrenome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sobrenome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cargo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataContratacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataContratacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailCorp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailCorp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+
+        <dd>
+
+            <!-- @Html.DisplayFor(model => model.Senha)-->
+            @{
+                string filtrado = "**********";
+            }
+            @Html.DisplayFor(model => filtrado);
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Perm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Perm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FuncionarioID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

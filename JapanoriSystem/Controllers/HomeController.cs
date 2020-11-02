@@ -17,8 +17,10 @@ namespace JapanoriSystem.Controllers
             }
             else
             {
+                ViewBag.idUsuarioLog = Session["idUsuario"];
                 ViewBag.nomeUsuarioLog = Session["usuarioLogado"];
                 ViewBag.sobrenomeLog = Session["sobrenomeLogado"];
+                ViewBag.cargoUsuarioLog = Session["cargoUsuario"];
                 ViewBag.nomeCompletoLog = Session["nomeCompleto"];
                 ViewBag.emailUsuarioLog = Session["emailUsuarioLogado"];
                 ViewBag.permUsuarioLog = Session["permUsuarioLogado"];

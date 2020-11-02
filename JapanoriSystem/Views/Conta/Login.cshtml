@@ -4,14 +4,25 @@
 }
 
 
+
+<br />
+<br />
+<br />
+<br />
+<br />
 <div class="row"> Imagem Logo </div>
+<br />
+<br />
+<br />
+<br />
+<br />
 @ViewBag.msgLogar
 @using (Html.BeginForm("Login", "Conta", FormMethod.Post))
 {
     <fieldset>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(m => m.EmailCorp, new { @class = "ol-md-2 control-label" })
+            @Html.LabelFor(m => m.EmailCorp, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.EditorFor(m => m.EmailCorp, new
                 {
@@ -21,7 +32,7 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Senha, new { @class= "ol-md-2 control-label" })
+            @Html.LabelFor(m => m.Senha, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.EditorFor(m => m.Senha, new
                 {
@@ -37,7 +48,6 @@
         </div>
     </fieldset>
 }
-
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")

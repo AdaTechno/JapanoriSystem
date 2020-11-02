@@ -33,8 +33,9 @@ namespace JapanoriSystem.Models
 
         [DisplayName("Status")]
         public string Status { get; set; }
-        
 
+        [DisplayName("Valor Total")]
+        public double PrecoTotal { get; set; }
     }
 
     [Table("tbProduto")]
@@ -45,6 +46,7 @@ namespace JapanoriSystem.Models
         public int ProdutoID { get; set; }
         public string Nome { get; set; }
         public string Desc { get; set; }
+        [DisplayName("Valor Unitário")]
         public double Preco { get; set; }
 
         [DisplayName("Itens do Estoque")]

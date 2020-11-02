@@ -1,0 +1,89 @@
+﻿@model IEnumerable<JapanoriSystem.Models.Funcionario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.NomeCompleto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataContratacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailCorp)
+        </th>
+        <!--th>
+            @Html.DisplayNameFor(model => model.Senha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Perm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th-->
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeCompleto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataContratacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailCorp)
+        </td>
+        <!--td>
+            @Html.DisplayFor(modelItem => item.Senha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Perm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td-->
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FuncionarioID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FuncionarioID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FuncionarioID })
+        </td>
+    </tr>
+}
+
+</table>

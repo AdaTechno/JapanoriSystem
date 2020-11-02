@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using JapanoriSystem.DAL;
 using JapanoriSystem.Models;
+using PagedList;
 
 namespace JapanoriSystem.Controllers
 {
@@ -15,10 +16,51 @@ namespace JapanoriSystem.Controllers
     {
         private bdJapanoriContext db = new bdJapanoriContext();
 
-        // GET: Produto
-        public ActionResult Index()
+        //          Tela Inicial Produtos
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.tbProduto.ToList());
+            //      Cadeia de objetos para definir a "current" Ordem da listagem das comandas
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.CodSortParm = String.IsNullOrEmpty(sortOrder) ? "" : "cod_cre"; // objeto que organiza a lista em ordem do código
+            ViewBag.NomeSortParm = String.IsNullOrEmpty(sortOrder) ? "" : "nome_cre"; // objeto que organiza a lista em ordem da situacao
+            ViewBag.PriceSortParm = String.IsNullOrEmpty(sortOrder) ? "" : "preco_decre"; // objeto que organiza a lista em ordem de preço
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+
+            var produtos = from p in db.tbProduto
+                           select p;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                produtos = produtos.Where(p => p.ProdutoID.ToString().Contains(searchString));
+                //produtos = produtos.Where(p => p.Nome.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "cod_cre":
+                    produtos = produtos.OrderBy(p => p.ProdutoID);
+                    break;
+                case "nome_cre":
+                    produtos = produtos.OrderBy(p => p.Nome);
+                    break;
+                case "preco_decre":
+                    produtos = produtos.OrderByDescending(p => p.Preco);
+                    break;
+                default:
+                    produtos = produtos.OrderByDescending(p => p.Preco);
+                    break;
+            }
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            return View(produtos.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Produto/Details/id

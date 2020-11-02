@@ -1,14 +1,14 @@
 ﻿@model JapanoriSystem.Models.Comanda
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Deletar";
 }
 
-<h2>Delete</h2>
+<h2>Deletar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Tem certeza que deseja excluir esta Comanda?</h3>
 <div>
-    <h4>Comanda</h4>
+    <h4>Comanda: &nbsp; @Html.DisplayFor(model => model.ID)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>

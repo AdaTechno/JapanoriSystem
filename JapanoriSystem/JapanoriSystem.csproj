@@ -100,6 +100,12 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.9.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Primitives.3.1.9\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>True</Private>
     </Reference>
@@ -242,6 +248,7 @@
     <Compile Include="Controllers\ComandaController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\FornecedorController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\ReservaController.cs" />
@@ -268,6 +275,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -314,9 +322,16 @@
     <Content Include="Views\Produto\Details.cshtml" />
     <Content Include="Views\Produto\Edit.cshtml" />
     <Content Include="Views\Produto\Index.cshtml" />
+    <Content Include="Views\Funcionario\Create.cshtml" />
+    <Content Include="Views\Funcionario\Delete.cshtml" />
+    <Content Include="Views\Funcionario\Details.cshtml" />
+    <Content Include="Views\Funcionario\Edit.cshtml" />
+    <Content Include="Views\Funcionario\Index.cshtml" />
+    <Content Include="Views\Conta\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Querys\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

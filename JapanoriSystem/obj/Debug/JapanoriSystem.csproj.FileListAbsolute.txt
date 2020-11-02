@@ -156,3 +156,8 @@ C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\Japanor
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.InitialCreate.resources
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.csproj.GenerateResource.cache
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.AlterandoComanda.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\bin\PagedList.dll
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\bin\PagedList.Mvc.dll
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\bin\PagedList.xml
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\bin\PagedList.Mvc.xml
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.csprojAssemblyReference.cache

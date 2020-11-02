@@ -33,7 +33,7 @@ namespace JapanoriSystem.Models
         public string Endereco { get; set; }
         public string Cep { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [DisplayName("Data de contratação")]
         public DateTime DataContratacao { get; set; }
         [Required]
