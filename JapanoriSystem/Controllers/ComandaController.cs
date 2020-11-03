@@ -131,6 +131,7 @@ namespace JapanoriSystem.Controllers
             {
                 comandas = comandas.Where(s => s.ID.ToString().Contains(searchString));
             }
+            comandas = comandas.OrderBy(s => s.ID);
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(comandas.ToPagedList(pageNumber, pageSize));
@@ -138,13 +139,80 @@ namespace JapanoriSystem.Controllers
 
         //      POST Tela Inserir 1
         [HttpPost, ActionName("Inserir_1")]
-        public ActionResult InserirConfirmed(Comanda comanda)
+        public ActionResult Inserir_1Confirmed(Comanda comanda)
         {
             return View();
         }
-       
 
-       
+
+        public ActionResult Inserir_2(string searchString, int? id)
+        {
+
+            if (id == null)
+            {
+                return RedirectToAction("Inserir_1", "Comanda");
+            }
+
+            Comanda comanda = db.tbComanda
+                .Include(i => i.Produtos)
+                .Where(i => i.ID == id)
+                .Single();
+
+            PopulateAssignedProdutoData(comanda);
+
+            if (comanda == null)
+            {
+                return RedirectToAction("Inserir_1", "Comanda");
+            }
+
+            
+            var produtos = from s in db.tbProduto
+                           select s;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                produtos = produtos.Where(s => s.ProdutoID.ToString().Contains(searchString)
+                                        || s.Nome.Contains(searchString));
+            }
+
+
+            return View(comanda);
+        }
+
+        [HttpPost, ActionName("Inserir_2")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Inserir_2Confirmed(int? id, string[] selectedProdutos)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Inserir_1", "Comanda");
+            }
+            var comandaToUpdate = db.tbComanda
+               .Include(i => i.Produtos)
+               .Where(i => i.ID == id)
+               .Single();
+
+            if (TryUpdateModel(comandaToUpdate, "",
+               new string[] { "ID", "Situacao" }))
+            {
+                try
+                {
+                    UpdateComandaProdutos(selectedProdutos, comandaToUpdate);
+
+                    db.SaveChanges();
+
+                    return RedirectToAction("Inserir_1");
+                }
+                catch (RetryLimitExceededException /* dex */)
+                {
+                    //Log the error (uncomment dex variable name and add a line here to write a log.
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
+            }
+            PopulateAssignedProdutoData(comandaToUpdate);
+            return View(comandaToUpdate);
+        }
+
+
         //          Tela Edição de Comanda
         public ActionResult Edit(int? id)
         {
@@ -179,6 +247,8 @@ namespace JapanoriSystem.Controllers
                 {
                     ProdutoID = produto.ProdutoID,
                     Nome = produto.Nome,
+                    Desc = produto.Desc,
+                    Preco = produto.Preco,
                     Assigned = ComandaProdutos.Contains(produto.ProdutoID)
                 });
             }
@@ -200,7 +270,7 @@ namespace JapanoriSystem.Controllers
                .Single();
 
             if (TryUpdateModel(comandaToUpdate, "",
-               new string[] { "ID", "Situacao"}))
+               new string[] { "ID", "Situacao" }))
             {
                 try
                 {

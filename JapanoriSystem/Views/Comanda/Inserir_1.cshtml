@@ -5,7 +5,18 @@
 }
 
 <h2>Inserir_1</h2>
-
+<br />
+@using (Html.BeginForm("Inserir_1", "Comanda", FormMethod.Get))
+{
+    <table>
+        <tr>
+            <th>Código da Comanda: </th>
+            <th>@Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })</th>
+            <th><input type="submit" value="Search" class="btn btn-default" /></th>
+        </tr>
+    </table>
+}
+<br />
 <table class="table">
     <tr>
         <th>
@@ -14,16 +25,17 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID)
-        </td>
-        <td>
-            @Html.ActionLink("Select", "Inserir_1", new { id=item.ID }) |
-            @Html.ActionLink("Inserir", "Inserir_2", new { id=item.ID }) |
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.ActionLink("Select", "Inserir_1", new { id = item.ID }) |
+                @Html.ActionLink("Inserir", "Inserir_2", new { id = item.ID }) |
+            </td>
+        </tr>
+    }
 
 </table>

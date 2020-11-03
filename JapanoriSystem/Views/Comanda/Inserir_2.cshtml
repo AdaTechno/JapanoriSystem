@@ -1,0 +1,77 @@
+﻿@model JapanoriSystem.Models.Comanda
+
+@{
+    ViewBag.Title = "Inserir_2";
+}
+
+<h2>Inserir_2</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h3>Comanda &nbsp; @Html.DisplayFor(model => model.ID)</h3>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+        <br />
+        @using (Html.BeginForm("Inserir_2", "Comanda", FormMethod.Get))
+        {
+            <table>
+                <tr>
+                    <th>Buscar Produto:</th>
+                    <th>@Html.TextBox("SearchString", "", new { @class = "form-control" })</th>
+                    <th><input type="submit" value="Search" class="btn btn-default" /></th>
+                </tr>
+            </table>
+        }
+        <br />
+
+        <table class="table">
+            <tr>
+                @{
+                    int cnt = 0;
+                    List<JapanoriSystem.ViewModels.AssignedProdutoData> produtos = ViewBag.Produtos;
+
+                    foreach (var produto in produtos)
+                    {
+                        if (cnt++ % 3 == 0)
+                        {
+                        @:</tr><tr>
+                        }
+                        @:<td>
+                            <input type="checkbox"
+                                   name="selectedProdutos"
+                                   value="@produto.ProdutoID"
+                                   @(Html.Raw(produto.Assigned ? "checked=\"checked\"" : "")) />
+                        @:</td>
+                        @:<td>
+                            @produto.ProdutoID
+                        @:</td>
+                        @:<td>
+                            @produto.Nome
+                        @:</td>
+                        @:<td>
+                            @produto.Desc
+                        @:</td>
+                        @:<td>
+                            @produto.Preco
+                        @:</td>
+                    }
+                @:</tr>
+                }
+            </table>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+<div>
+    @Html.ActionLink("Voltar", "Inserir_1")
+</div>

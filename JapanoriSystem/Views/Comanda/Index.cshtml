@@ -58,7 +58,7 @@
                 @Html.DisplayFor(modelItem => parameterValue)
             </td>
             <td>
-                @{ 
+                @{
                     string total = item.Produtos.Sum(x => x.Preco).ToString();
                 }
                 @Html.DisplayFor(modelItem => total)

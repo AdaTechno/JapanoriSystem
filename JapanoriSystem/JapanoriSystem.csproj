@@ -330,6 +330,7 @@
     <Content Include="Views\Funcionario\Index.cshtml" />
     <Content Include="Views\Conta\Perfil.cshtml" />
     <Content Include="Views\Comanda\Inserir_1.cshtml" />
+    <Content Include="Views\Comanda\Inserir_2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
