@@ -1,6 +1,7 @@
 ﻿using Microsoft.Ajax.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ using System.Data.Entity.Infrastructure.MappingViews;
 using System.Linq;
 using System.Management.Instrumentation;
 using System.Web;
+using System.Web.Mvc;
 
 namespace JapanoriSystem.Models
 {
@@ -36,7 +38,8 @@ namespace JapanoriSystem.Models
         public string Status { get; set; }
 
         [DisplayName("Produtos")]
-        public virtual ICollection<Produto> Produtos { get; set; }
+        public virtual ICollection<ProdutoComanda> Produtos { get; set; }
+        
 
     }
 
@@ -54,16 +57,30 @@ namespace JapanoriSystem.Models
         public string Status { get; set; }
 
         [DisplayName("Itens do Estoque")]
-        public virtual ICollection<Estoque> EstoqueItens { get; set; }
+        public virtual ICollection<EstoqueProduto> EstoqueItens { get; set; }
 
-        public virtual ICollection<Comanda> Comandas { get; set; }
+        public virtual ICollection<ProdutoComanda> Comandas { get; set; }
+        
 
     }
 
-    /*public enum TipoQuantidade
+    [Table("tbProdutoComanda")]
+    public class ProdutoComanda
     {
-        Unidades, Quilos, Gramas, Miligramas, Litros, Mililitros, Centímetros, Metros
-    }*/
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ProdutoComandaID { get; set; }
+        [Column(Order = 1)]
+        [ForeignKey("Comanda")]
+        public int ComandaID { get; set; }
+        [Column(Order = 2)]
+        [ForeignKey("Produto")]
+        public int ProdutoID { get; set; }
+
+        public virtual Comanda Comanda { get; set; }
+        public virtual Produto Produto { get; set; }
+        
+    }
 
     [Table("tbEstoque")]
     public class Estoque
@@ -83,8 +100,21 @@ namespace JapanoriSystem.Models
         public string Obs { get; set; }
         public string Status { get; set; }
 
-        public virtual ICollection<Produto> Produtos { get; set; }
+        public virtual ICollection<EstoqueProduto> Produtos { get; set; }
     }
 
+    [Table("tbEstoqueProduto")]
+    public class EstoqueProduto
+    {
+        [Key, Column(Order = 1)]
+        [ForeignKey("Produto")]
+        public int ProdutoID { get; set; }
+        [Key, Column(Order = 2)]
+        [ForeignKey("Estoque")]
+        public int ItemID { get; set; }
+
+        public virtual Produto Produto { get; set; }
+        public virtual Estoque Estoque { get; set; }
+    }
 
 }

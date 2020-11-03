@@ -7,6 +7,8 @@
     <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/chosen.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -94,8 +96,8 @@
                             <ul class="dropdown-menu">
                                 <li><a href="#">Perfil</a></li>
                                 <li><a href="#">Sobre</a></li>
-                                <li>@Html.ActionLink("Sair","Logout","Conta")</li>
-                               
+                                <li>@Html.ActionLink("Sair", "Logout", "Conta")</li>
+
                             </ul>
                         </li>
                     </ul>
@@ -119,6 +121,9 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
     @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
 </body>
 </html>

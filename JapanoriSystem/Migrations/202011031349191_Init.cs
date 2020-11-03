@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -13,9 +13,23 @@
                     {
                         ID = c.Int(nullable: false),
                         Situacao = c.String(),
+                        PrecoTotal = c.Double(nullable: false),
                         Status = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.tbProdutoComanda",
+                c => new
+                    {
+                        ComandaID = c.Int(nullable: false),
+                        ProdutoID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.ComandaID, t.ProdutoID })
+                .ForeignKey("dbo.tbComanda", t => t.ComandaID, cascadeDelete: true)
+                .ForeignKey("dbo.tbProduto", t => t.ProdutoID, cascadeDelete: true)
+                .Index(t => t.ComandaID)
+                .Index(t => t.ProdutoID);
             
             CreateTable(
                 "dbo.tbProduto",
@@ -28,6 +42,19 @@
                         Status = c.String(),
                     })
                 .PrimaryKey(t => t.ProdutoID);
+            
+            CreateTable(
+                "dbo.tbEstoqueProduto",
+                c => new
+                    {
+                        ProdutoID = c.Int(nullable: false),
+                        ItemID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.ProdutoID, t.ItemID })
+                .ForeignKey("dbo.tbEstoque", t => t.ItemID, cascadeDelete: true)
+                .ForeignKey("dbo.tbProduto", t => t.ProdutoID, cascadeDelete: true)
+                .Index(t => t.ProdutoID)
+                .Index(t => t.ItemID);
             
             CreateTable(
                 "dbo.tbEstoque",
@@ -65,49 +92,23 @@
                     })
                 .PrimaryKey(t => t.FuncionarioID);
             
-            CreateTable(
-                "dbo.ProdutoComanda",
-                c => new
-                    {
-                        Produto_ProdutoID = c.Int(nullable: false),
-                        Comanda_ID = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Produto_ProdutoID, t.Comanda_ID })
-                .ForeignKey("dbo.tbProduto", t => t.Produto_ProdutoID, cascadeDelete: true)
-                .ForeignKey("dbo.tbComanda", t => t.Comanda_ID, cascadeDelete: true)
-                .Index(t => t.Produto_ProdutoID)
-                .Index(t => t.Comanda_ID);
-            
-            CreateTable(
-                "dbo.EstoqueProduto",
-                c => new
-                    {
-                        Estoque_ItemID = c.Int(nullable: false),
-                        Produto_ProdutoID = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Estoque_ItemID, t.Produto_ProdutoID })
-                .ForeignKey("dbo.tbEstoque", t => t.Estoque_ItemID, cascadeDelete: true)
-                .ForeignKey("dbo.tbProduto", t => t.Produto_ProdutoID, cascadeDelete: true)
-                .Index(t => t.Estoque_ItemID)
-                .Index(t => t.Produto_ProdutoID);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.EstoqueProduto", "Produto_ProdutoID", "dbo.tbProduto");
-            DropForeignKey("dbo.EstoqueProduto", "Estoque_ItemID", "dbo.tbEstoque");
-            DropForeignKey("dbo.ProdutoComanda", "Comanda_ID", "dbo.tbComanda");
-            DropForeignKey("dbo.ProdutoComanda", "Produto_ProdutoID", "dbo.tbProduto");
-            DropIndex("dbo.EstoqueProduto", new[] { "Produto_ProdutoID" });
-            DropIndex("dbo.EstoqueProduto", new[] { "Estoque_ItemID" });
-            DropIndex("dbo.ProdutoComanda", new[] { "Comanda_ID" });
-            DropIndex("dbo.ProdutoComanda", new[] { "Produto_ProdutoID" });
-            DropTable("dbo.EstoqueProduto");
-            DropTable("dbo.ProdutoComanda");
+            DropForeignKey("dbo.tbProdutoComanda", "ProdutoID", "dbo.tbProduto");
+            DropForeignKey("dbo.tbEstoqueProduto", "ProdutoID", "dbo.tbProduto");
+            DropForeignKey("dbo.tbEstoqueProduto", "ItemID", "dbo.tbEstoque");
+            DropForeignKey("dbo.tbProdutoComanda", "ComandaID", "dbo.tbComanda");
+            DropIndex("dbo.tbEstoqueProduto", new[] { "ItemID" });
+            DropIndex("dbo.tbEstoqueProduto", new[] { "ProdutoID" });
+            DropIndex("dbo.tbProdutoComanda", new[] { "ProdutoID" });
+            DropIndex("dbo.tbProdutoComanda", new[] { "ComandaID" });
             DropTable("dbo.tbFuncionario");
             DropTable("dbo.tbEstoque");
+            DropTable("dbo.tbEstoqueProduto");
             DropTable("dbo.tbProduto");
+            DropTable("dbo.tbProdutoComanda");
             DropTable("dbo.tbComanda");
         }
     }

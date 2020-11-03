@@ -7,13 +7,13 @@ namespace JapanoriSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AlterColumn : IMigrationMetadata
+    public sealed partial class Test : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AlterColumn));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Test));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011021847582_AlterColumn"; }
+            get { return "202011031446183_Test"; }
         }
         
         string IMigrationMetadata.Source
