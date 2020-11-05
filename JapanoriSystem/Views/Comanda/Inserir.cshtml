@@ -13,11 +13,11 @@
     <div class="form-horizontal">
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+        @Html.HiddenFor(model => model.ComandaID)
         <div class="form-group">
             @Html.LabelFor(model => model.ComandaID, "ComandaID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-12">
-                @Html.DropDownList("ComandaID", null, htmlAttributes: new { @class = "col-md-10", id ="ComandaID"})
+                @Html.TextBoxFor(model => model.ComandaID, htmlAttributes: new { id = "ComandaID"})
                 @Html.ValidationMessageFor(model => model.ComandaID, "", new { @class = "text-danger" })
 
             </div>
@@ -43,15 +43,17 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-@section Scripts{
+@*@section Scripts{
     <script type="text/javascript">
 
         $(function () {
 
-            $("#ComandaID").chosen();
+            $("#ProdutoID").chosen({
+                disable_search_threshold : 5
+            });
         });
 
 
     </script>
 
-}
+}*@

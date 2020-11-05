@@ -1,0 +1,35 @@
+﻿@model JapanoriSystem.Models.ProdutoComanda
+
+@{
+    ViewBag.Title = "CaixaIDComanda";
+}
+
+<h2>CaixaIDComanda</h2>
+@using (Html.BeginForm("Caixa", "Caixa", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <br />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ComandaID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                @Html.TextBoxFor(m => m.ComandaID)
+
+            </div>
+        </div>
+        <br />
+        @Html.ActionLink("Submit", "", null, new { @id = "submit" })
+    </div>
+}
+
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#submit").click(function () {
+                document.forms[0].submit();
+                return false;
+            });
+        });
+    </script>
+}

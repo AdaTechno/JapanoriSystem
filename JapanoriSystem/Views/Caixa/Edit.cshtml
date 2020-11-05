@@ -1,0 +1,66 @@
+﻿@model JapanoriSystem.Models.ProdutoComanda
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+    <div class="form-horizontal">
+        <h4>ProdutoComanda</h4>
+        <hr />
+        
+        @Html.HiddenFor(model => model.ProdutoComandaID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ComandaID, "ComandaID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ComandaID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProdutoID, "ProdutoID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProdutoID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProdutoID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @* === Quantidade === *@
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Quantidade, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Quantidade, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Quantidade, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Save" class="btn btn-default" onclick="PcUpdate()"/>
+            </div>
+        </div>
+    </div>
+
+<div>
+    @Html.ActionLink("Back to List", "Caixa")
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        function PcUpdate() {
+            var ProdutoComandaID = $("#ProdutoComandaID").val();
+            var ComandaID = $("#ComandaID").val();
+            var ProdutoID = $("#ProdutoID").val();
+
+            var update = {
+                "ProdutoComandaID": ProdutoComandaID,
+                "ComandaID": ComandaID,
+                "ProdutoID": ProdutoID
+            }
+            $.post('/Caixa/Edit', update, function (data) {
+                if (data == 0) {
+                    location: location.href;
+                }
+            }, 'json');
+            alert("Atualizado com sucesso na comanda " + ComandaID);
+        };
+    </script>
+}

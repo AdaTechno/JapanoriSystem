@@ -26,7 +26,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(m => m.EmailCorp, new
                 {
-                    htmlAttributes = new { id = "txtEmail", senha = "txtEmail", type = "text", @class = "form-control", placeholder = "Digite seu Email", required = "required", maxlength = "100" }
+                    htmlAttributes = new { id = "txtEmail", name = "txtEmail", type = "text", @class = "form-control", placeholder = "Digite seu Email", required = "required", maxlength = "100" }
                 })
                 @Html.ValidationMessageFor(m => m.EmailCorp, "", new { @class = "text-danger" })
             </div>
@@ -36,7 +36,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(m => m.Senha, new
                 {
-                    htmlAttributes = new { id = "txtSenha", senha = "txtSenha", type = "password", @class = "form-control", placeholder = "Digite sua senha", required = "required", maxlength = "30" }
+                    htmlAttributes = new { id = "txtSenha", name = "txtSenha", type = "password", @class = "form-control", placeholder = "Digite sua senha", required = "required", maxlength = "30" }
                 })
                 @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
             </div>

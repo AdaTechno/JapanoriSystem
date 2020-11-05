@@ -1,0 +1,77 @@
+﻿@model IEnumerable<JapanoriSystem.Models.ProdutoComanda>
+
+@{
+    ViewBag.Title = "Caixa";
+}
+
+<h2>Caixa</h2>
+<h1>Comanda </h1>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Produto.ProdutoID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Produto.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Produto.Preco)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Produto.ProdutoID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Produto.Nome)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Produto.Preco)
+    </td>
+    @*<td>
+        @Html.DisplayFor(modelItem => item.Quantidade)
+    </td>*@
+    <td>
+        @Html.Raw("<input type='button' value='Edit' onclick='EditPC("+item.ProdutoComandaID+")'/>") |
+        @Html.ActionLink("Details", "Details", new { id = item.ProdutoComandaID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ProdutoComandaID })
+    </td>
+</tr>
+}
+
+</table>
+<div id="openPopup" style="display:none"></div>
+
+@section Scripts{
+    <script type="text/javascript">
+        function EditPC(ProdutoComandaID) {
+            var x = $("#openPopup");
+            x.load("/Caixa/Edit/" + ProdutoComandaID, function () {
+                x.dialog({
+                    show: {
+                        effect: "blind",
+                        duration: 1000
+                    },
+                    hide: {
+                        effect: "explode",
+                        duration: 1000
+                    },
+                    modal: true,
+                    width: 450,
+                    height: 500,
+                    title: "Atualizar produto da comanda | id= " + ProdutoComandaID,
+                    resizable: false
+                });
+            });
+        }
+    </script>
+    }

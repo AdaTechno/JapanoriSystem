@@ -27,7 +27,7 @@ namespace JapanoriSystem.Controllers
         //              Tela Inicial
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            ProdutoComanda pc = new ProdutoComanda();
+            //ProdutoComanda pc = new ProdutoComanda();
             //      Cadeia de objetos para definir a "current" Ordem da listagem das comandas
             ViewBag.CurrentSort = sortOrder;
             ViewBag.CodSortParm = String.IsNullOrEmpty(sortOrder) ? "cod_cre" : ""; // objeto que organiza a lista em ordem do código
@@ -49,8 +49,8 @@ namespace JapanoriSystem.Controllers
                            select s;
 
             var produto = from cp in db.tbProduto
-                                 select cp;
-            
+                          select cp;
+
 
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -124,7 +124,8 @@ namespace JapanoriSystem.Controllers
         //      Tela Inserir 1
         public ActionResult Inserir()
         {
-            ViewBag.ComandaID = new SelectList(db.tbComanda, "ID", "ID");
+            
+            //ViewBag.ComandaID = new SelectList(db.tbComanda, "ID", "ID");
             ViewBag.ProdutoID = new SelectList(db.tbProduto, "ProdutoID", "Nome");
 
 
@@ -135,15 +136,17 @@ namespace JapanoriSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Inserir([Bind(Include = "ComandaID,ProdutoID")] ProdutoComanda produtoComanda)
         {
+            
+           
             if (ModelState.IsValid)
             {
                 db.tbProdutoComanda.Add(produtoComanda);
                 db.SaveChanges();
                 ViewBag.Msg = "Produto inserido com sucesso!";
-                return View();
+                return RedirectToAction("Inserir");
             }
 
-            ViewBag.ComandaID = new SelectList(db.tbComanda, "ID", "ID", produtoComanda.ComandaID);
+            //ViewBag.ComandaID = new SelectList(db.tbComanda, "ID", "ID", produtoComanda.ComandaID);
             ViewBag.ProdutoID = new SelectList(db.tbProduto, "ProdutoID", "Nome", produtoComanda.ProdutoID);
 
             return View(produtoComanda);
@@ -155,7 +158,6 @@ namespace JapanoriSystem.Controllers
             list = db.tbProdutoComanda.Where(i => i.ComandaID == id).ToList();
             return Json(new ListItem());
         }
-
 
 
         //          Tela Edição de Comanda

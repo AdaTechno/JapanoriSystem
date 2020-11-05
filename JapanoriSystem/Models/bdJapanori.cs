@@ -73,12 +73,16 @@ namespace JapanoriSystem.Models
         [Column(Order = 1)]
         [ForeignKey("Comanda")]
         public int ComandaID { get; set; }
+
         [Column(Order = 2)]
         [ForeignKey("Produto")]
         public int ProdutoID { get; set; }
 
+        public int Quantidade { get; set; }
+
         public virtual Comanda Comanda { get; set; }
         public virtual Produto Produto { get; set; }
+
         
     }
 

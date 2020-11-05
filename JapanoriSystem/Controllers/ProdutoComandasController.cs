@@ -50,7 +50,7 @@ namespace JapanoriSystem.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ComandaID,ProdutoID")] ProdutoComanda produtoComanda)
+        public ActionResult Create([Bind(Include = "ProdutoComandaID,ComandaID,ProdutoID,Quantidade")] ProdutoComanda produtoComanda)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace JapanoriSystem.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProdutoComandaID,ComandaID,ProdutoID")] ProdutoComanda produtoComanda)
+        public ActionResult Edit([Bind(Include = "ProdutoComandaID,ComandaID,ProdutoID,Quantidade")] ProdutoComanda produtoComanda)
         {
             if (ModelState.IsValid)
             {

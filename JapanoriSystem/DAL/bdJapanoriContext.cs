@@ -1,8 +1,10 @@
 ﻿using JapanoriSystem.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace JapanoriSystem.DAL
 {
@@ -25,6 +27,10 @@ namespace JapanoriSystem.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            /*modelBuilder.Entity<ProdutoComanda>()
+                .HasKey(x => new { x.ComandaID, x.ProdutoID });*/
+            
         }
 
         public IEnumerable<Comanda> GetComandaList()
@@ -37,5 +43,7 @@ namespace JapanoriSystem.DAL
             var list = tbProduto.ToList();
             return list;
         }
+
+        
     }
 }

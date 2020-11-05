@@ -59,7 +59,8 @@
             </td>
             <td>
                 @{
-                    string total = item.Produtos.Sum(x => x.Produto.Preco).ToString();
+                    string total1 = item.Produtos.Sum(x => x.Produto.Preco).ToString();
+                    string total = "R$ " + total1;
                 }
                 @Html.DisplayFor(modelItem => total)
             </td>
