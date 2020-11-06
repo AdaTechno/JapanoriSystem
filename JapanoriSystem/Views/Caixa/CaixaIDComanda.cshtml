@@ -4,7 +4,7 @@
     ViewBag.Title = "CaixaIDComanda";
 }
 
-<h2>CaixaIDComanda</h2>
+<h2>Insira o código da comanda</h2>
 @using (Html.BeginForm("Caixa", "Caixa", FormMethod.Post))
 {
     <div class="form-horizontal">
@@ -13,7 +13,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ComandaID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div>
-                @Html.TextBoxFor(m => m.ComandaID)
+                @Html.TextBoxFor(model => model.ComandaID, htmlAttributes: new { id = "ComandaID", @class = "form-control" })
 
             </div>
         </div>

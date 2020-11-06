@@ -6,18 +6,18 @@
 
 <h2>Inserir</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Inserir","Comanda",FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ComandaID)
+        
         <div class="form-group">
             @Html.LabelFor(model => model.ComandaID, "ComandaID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-12">
-                @Html.TextBoxFor(model => model.ComandaID, htmlAttributes: new { id = "ComandaID"})
+                @Html.TextBoxFor(model => model.ComandaID, htmlAttributes: new { id = "ComandaID", @class ="form-control"})
                 @Html.ValidationMessageFor(model => model.ComandaID, "", new { @class = "text-danger" })
 
             </div>

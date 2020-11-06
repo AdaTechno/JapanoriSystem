@@ -31,9 +31,6 @@ namespace JapanoriSystem.Models
         [DisplayName("Situação")]
         public string Situacao { get; set; }
 
-        [DisplayName("Valor Total")]
-        public double PrecoTotal { get; set; }
-
         [DisplayName("Status")]
         public string Status { get; set; }
 
@@ -77,48 +74,42 @@ namespace JapanoriSystem.Models
         [Column(Order = 2)]
         [ForeignKey("Produto")]
         public int ProdutoID { get; set; }
-
+        [DefaultValue("1")]
         public int Quantidade { get; set; }
-
+        public string Status { get; set; }
         public virtual Comanda Comanda { get; set; }
         public virtual Produto Produto { get; set; }
-
-        
+        public virtual ICollection<ProdutoComandaVendas> ProdutoComandaVendas { get; set; }
     }
 
-    [Table("tbEstoque")]
-    public class Estoque
+    [Table("tbVendas")]
+    public class Vendas
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ItemID { get; set; }
-        public string Nome { get; set; }
-        public int Quantidade { get; set; }
-        public string TipoQuantidade { get; set; }
-        public string Categoria { get; set; }
+        public int VendaID { get; set; }
+        public string NomeFuncionario { get; set; }
+        public virtual ICollection<ProdutoComandaVendas> ProdutoComandaVendas { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [DisplayName("Último carregamento")]
-        public DateTime UltimoCarregamento { get; set; }
-        public string Obs { get; set; }
-        public string Status { get; set; }
-
-        public virtual ICollection<EstoqueProduto> Produtos { get; set; }
     }
 
-    [Table("tbEstoqueProduto")]
-    public class EstoqueProduto
+    [Table("tbProdutoComandaVendas")]
+    public class ProdutoComandaVendas
     {
-        [Key, Column(Order = 1)]
-        [ForeignKey("Produto")]
-        public int ProdutoID { get; set; }
-        [Key, Column(Order = 2)]
-        [ForeignKey("Estoque")]
-        public int ItemID { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ProdutoComandaVendasID { get; set; }
 
-        public virtual Produto Produto { get; set; }
-        public virtual Estoque Estoque { get; set; }
+        [Column(Order = 1)]
+        [ForeignKey("Vendas")]
+        public int VendaID { get; set; }
+
+        [Column(Order = 2)]
+        [ForeignKey("ProdutoComanda")]
+        public int ProdutoComandaID { get; set; }
+
+        public virtual Vendas Vendas { get; set; }
+        public virtual ProdutoComanda ProdutoComanda { get; set; }
     }
 
 }

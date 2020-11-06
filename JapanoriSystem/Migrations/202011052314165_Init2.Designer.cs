@@ -7,13 +7,13 @@ namespace JapanoriSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class ArrumandoDatabase : IMigrationMetadata
+    public sealed partial class Init2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ArrumandoDatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init2));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011032157392_ArrumandoDatabase"; }
+            get { return "202011052314165_Init2"; }
         }
         
         string IMigrationMetadata.Source

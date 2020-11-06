@@ -259,20 +259,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011032157392_ArrumandoDatabase.cs" />
-    <Compile Include="Migrations\202011032157392_ArrumandoDatabase.designer.cs">
-      <DependentUpon>202011032157392_ArrumandoDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202011052314165_Init2.cs" />
+    <Compile Include="Migrations\202011052314165_Init2.designer.cs">
+      <DependentUpon>202011052314165_Init2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011041048528_Update.cs" />
-    <Compile Include="Migrations\202011041048528_Update.designer.cs">
-      <DependentUpon>202011041048528_Update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011051427459_Test.cs" />
-    <Compile Include="Migrations\202011051427459_Test.designer.cs">
-      <DependentUpon>202011051427459_Test.cs</DependentUpon>
+    <Compile Include="Migrations\202011052321175_RemoveColumnPrecoTotal.cs" />
+    <Compile Include="Migrations\202011052321175_RemoveColumnPrecoTotal.designer.cs">
+      <DependentUpon>202011052321175_RemoveColumnPrecoTotal.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\bdJapanori.cs" />
+    <Compile Include="Models\Estoque.cs" />
     <Compile Include="Models\FuncionarioLoginSessao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AssignedProdutoData.cs" />
@@ -391,6 +388,7 @@
     <Content Include="Views\Caixa\CaixaIDComanda.cshtml" />
     <Content Include="Views\Caixa\Caixa.cshtml" />
     <Content Include="Views\Caixa\Edit.cshtml" />
+    <Content Include="Views\Caixa\Excluir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -411,14 +409,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011032157392_ArrumandoDatabase.resx">
-      <DependentUpon>202011032157392_ArrumandoDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011052314165_Init2.resx">
+      <DependentUpon>202011052314165_Init2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011041048528_Update.resx">
-      <DependentUpon>202011041048528_Update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011051427459_Test.resx">
-      <DependentUpon>202011051427459_Test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011052321175_RemoveColumnPrecoTotal.resx">
+      <DependentUpon>202011052321175_RemoveColumnPrecoTotal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

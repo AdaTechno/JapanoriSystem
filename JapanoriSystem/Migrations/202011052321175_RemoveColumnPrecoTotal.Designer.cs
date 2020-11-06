@@ -7,13 +7,13 @@ namespace JapanoriSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Update : IMigrationMetadata
+    public sealed partial class RemoveColumnPrecoTotal : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Update));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveColumnPrecoTotal));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011041048528_Update"; }
+            get { return "202011052321175_RemoveColumnPrecoTotal"; }
         }
         
         string IMigrationMetadata.Source

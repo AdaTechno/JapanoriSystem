@@ -64,11 +64,8 @@ namespace JapanoriSystem.Controllers
                 case "sit_cre":
                     comandas = comandas.OrderBy(s => s.Situacao);
                     break;
-                case "preco_decre":
-                    comandas = comandas.OrderByDescending(cp => cp.PrecoTotal);
-                    break;
                 default:
-                    comandas = comandas.OrderByDescending(cp => cp.PrecoTotal);
+                    comandas = comandas.OrderBy(s => s.ID);
                     break;
             }
             int pageSize = 5;
@@ -235,13 +232,13 @@ namespace JapanoriSystem.Controllers
             }
             PopulateAssignedProdutoData(comandaToUpdate);
             return View(comandaToUpdate);
-        }*/
+        }
 
-        /*private void UpdateComandaProdutos(string[] selectedProdutos, Comanda comandaToUpdate)
+        private void UpdateComandaProdutos(string[] selectedProdutos, Comanda comandaToUpdate)
         {
             if (selectedProdutos == null)
             {
-                comandaToUpdate.Produtos = new List<Produto>();
+                comandaToUpdate.Produtos = new ICollection<Produto>();
                 return;
             }
 
