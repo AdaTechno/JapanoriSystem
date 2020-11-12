@@ -41,7 +41,7 @@ namespace JapanoriSystem.Controllers
             {
                 produtos = produtos.Where(p => p.ProdutoID.ToString().Contains(searchString)
                     || p.Nome.ToString().Contains(searchString)
-                    || p.Desc.ToString().Contains(searchString));
+                    || p.cDesc.ToString().Contains(searchString));
 
             }
             switch (sortOrder)
@@ -90,16 +90,37 @@ namespace JapanoriSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProdutoID,Nome,Desc,Preco,EstoqueItens")] Produto produto)
+        public ActionResult Create(string Nome, string cDesc, double Preco)
         {
-            if (ModelState.IsValid)
+            if (Nome == null || cDesc == null || Preco == 0)
             {
-                db.tbProduto.Add(produto);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.ConfErro = "1";
+                ViewBag.Erro = "Insira valores válidos nos 3 campos";
+            }
+            else
+            {
+                var param = db.tbProduto
+                                .Where(i => i.Nome == Nome)
+                                .ToList()
+                                .Count();
+                if (param > 0)
+                {
+                    ViewBag.ConfErro = "2";
+                    ViewBag.Erro = "Já existe um produto com o mesmo nome";
+                    
+                }
+                if (param == 0)
+                {
+                    string cStatus = "On";
+                    ViewBag.addProduto = db.Database
+                                        .ExecuteSqlCommand("INSERT INTO tbProduto (Nome, cDesc, Preco, cStatus) " +
+                                        "VALUES ( '" + Nome + "','" + cDesc + "'," + Preco + ",'"+cStatus+"')");
+                    db.SaveChanges();
+                    ViewBag.Success = "Produto criado com sucesso";
+                }
             }
 
-            return View(produto);
+            return View();
         }
 
         // GET: Produto/Edit/id
@@ -121,7 +142,7 @@ namespace JapanoriSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProdutoID,Nome,Desc,Preco,Status")] Produto produto)
+        public ActionResult Edit([Bind(Include = "ProdutoID,Nome,cDesc,Preco")] Produto produto)
         {
             if (ModelState.IsValid)
             {

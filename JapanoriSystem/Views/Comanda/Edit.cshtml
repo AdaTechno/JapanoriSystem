@@ -1,72 +1,55 @@
-﻿@model JapanoriSystem.Models.Comanda
+﻿@model IEnumerable<JapanoriSystem.Models.ProdutoComanda>
 
-@{
-    ViewBag.Title = "Editar";
-}
+
 
 <h2>Editar</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h3>Comanda &nbsp; @ViewBag.ID</h3>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <dl class="dl-horizontal">
+        <dt>
+            Situação
+        </dt>
+        <dd>
+            @ViewBag.Situacao
+        </dd>
+        <dt>
+            Valor Total da Comanda
+        </dt>
+        <dd>
+            @ViewBag.ValorTotal
+        </dd>
+    </dl>
+    <table class="table">
+        <tr>
+            <th>Nome do Produto</th>
+            <th>Quantidade</th>
+            <th>Valor Unitário</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produto.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produto.Preco)
+                </td>
+            </tr>
+        }
+    </table>
 
-    <div class="form-horizontal">
-        <h3>Comanda &nbsp; @Html.DisplayFor(model => model.ID)</h3>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Situacao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                
-                @{ 
-                    List<SelectListItem> listItems = new List<SelectListItem>();
-                    listItems.Add(new SelectListItem { Text = "Ativa", Value = "Ativa", Selected = true });
-                    listItems.Add(new SelectListItem { Text = "Vazia", Value = "Vazia" });
-                }
-                @Html.DropDownListFor(model => model.Situacao, listItems, "---")
+</div>
 
-                @Html.ValidationMessageFor(model => model.Situacao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <table>
-                    <tr>
-                        @{
-                            int cnt = 0;
-                            List<JapanoriSystem.ViewModels.AssignedProdutoData> produtos = ViewBag.Produtos;
-
-                            foreach (var produto in produtos)
-                            {
-                                if (cnt++ % 3 == 0)
-                                {
-                                @:</tr><tr>
-                                }
-                                @:<td>
-                                    <input type="checkbox"
-                                           name="selectedProdutos"
-                                           value="@produto.ProdutoID"
-                                           @(Html.Raw(produto.Assigned ? "checked=\"checked\"" : "")) />
-                                    @produto.ProdutoID @:  @produto.Nome
-                                @:</td>
-                            }
-                        @:</tr>
-                        }
-                    </table>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
+<br />
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+

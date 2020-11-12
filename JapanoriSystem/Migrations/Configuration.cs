@@ -39,7 +39,7 @@
                     EmailCorp = "gustavo.pott@japanori.com.br",
                     Senha = "123",
                     Perm = "Admin",
-                    Status = "On" 
+                    cStatus = "On" 
                 }
 
             };
@@ -52,7 +52,7 @@
                 {
                     ID = 1000,
                     Situacao = "Vazia",
-                    Status = "On"
+                    cStatus = "On"
                 }
             };
             comandas.ForEach(s => context.tbComanda.Add(s));
@@ -63,9 +63,9 @@
                 new Produto
                 {
                     Nome = "Coca-Cola 350ml Lata",
-                    Desc = "Bebida",
+                    cDesc = "Bebida",
                     Preco = 5.00,
-                    Status = "On",
+                    cStatus = "On",
                 }
             };
             produtos.ForEach(s => context.tbProduto.Add(s));
@@ -81,7 +81,7 @@
                     Categoria = "Bebidas",
                     UltimoCarregamento = DateTime.Parse("20/10/2020"),
                     Obs = "",
-                    Status = "On",
+                    cStatus = "On",
                 }
             };
             itensEstoque.ForEach(s => context.tbEstoque.Add(s));

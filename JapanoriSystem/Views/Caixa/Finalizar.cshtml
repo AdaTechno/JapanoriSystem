@@ -1,0 +1,39 @@
+﻿@model JapanoriSystem.Models.ProdutoComandaVendas
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="hide">
+
+    </div>
+    <div class="hide">
+
+    </div>
+    <div class="hide">
+
+    </div>
+    <div class="hide">
+
+    </div>
+    <div class="hide">
+
+    </div>
+    <div class="form-horizontal">
+        <h3>Forma de Pagamento:</h3>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.DropDownList("FormaPag", new List<SelectListItem> {
+                                                                            new SelectListItem{Text = "Cartão de Débito", Value = "Cartão de Débito", Selected = true},
+                                                                            new SelectListItem{Text = "Dinheiro", Value = "Dinheiro"},
+                                                                            new SelectListItem{Text = "Cartão de Crédito", Value = "Cartão de Crédito"},
+                                                                            new SelectListItem{Text = "Cheque", Value = "Cheque"}
+                                                                        }, new { @class = "form-control"})
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Finalizar" class="btn btn-success" />
+        </div>
+    </div>
+}

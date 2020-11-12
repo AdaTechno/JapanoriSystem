@@ -59,7 +59,7 @@ namespace JapanoriSystem.Controllers
         {
             var res = db.tbFuncionario.Where(x => x.FuncionarioID == funcionarioID).ToList();
 
-            if (res != null && res.Count > 0 && res[0].Status != "Off")
+            if (res != null && res.Count > 0 && res[0].cStatus != "Off")
             {
                 return res[0];
             }
@@ -74,7 +74,7 @@ namespace JapanoriSystem.Controllers
         {
             var res = db.tbFuncionario.Where(x => x.EmailCorp == getemail).ToList();
 
-            if (res != null && res.Count > 0 && res[0].Status != "Off")
+            if (res != null && res.Count > 0 && res[0].cStatus != "Off")
             {
 
                 return res[0];

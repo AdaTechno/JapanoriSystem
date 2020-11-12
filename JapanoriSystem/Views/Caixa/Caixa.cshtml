@@ -17,44 +17,67 @@
         @ViewBag.ID2
     }
 </h1>
+<h3>
+    Total:
+    R$ @ViewBag.Total
+    @if (ViewBag.Total == null)
+    {
+        @ViewBag.Total2
+    }
+</h3>
 
+    @Html.ActionLink("Adicionar", "addProduto", new { id = ViewBag.ID }, htmlAttributes: new { @class = "btn btn-success" }) | 
+    @Html.ActionLink("Finalizar", "Finalizar", new { id = ViewBag.ID }, htmlAttributes: new { @class = "btn btn-success" })
+
+@if (ViewBag.ID == 0)
+{
+    @Html.ActionLink("Adicionar", "addProduto", new { id = ViewBag.ID2 }, htmlAttributes: new { @class = "btn btn-success" })
+    @Html.ActionLink("Finalizar", "Finalizar", new { id = ViewBag.ID2 }, htmlAttributes: new { @class = "btn btn-success" })
+}
+@ViewBag.teste
 <table class="table">
+
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Produto.ProdutoID)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Produto.Nome)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Produto.Preco)
+            @Html.DisplayNameFor(model => model.Quantidade)
         </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.Quantidade)
-            </th>*@
+        <th>
+            Funcionário
+        </th>
+        <th>
+            Valor Unitário
+        </th>
+        <th>
+            Valor Total
+        </th>
         <th></th>
     </tr>
+
 
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Produto.ProdutoID)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Produto.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Produto.Preco)
+                @Html.DisplayFor(modelItem => item.Quantidade)
             </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Quantidade)
-                </td>*@
             <td>
-                @*<a href="#" class="btn btn-default btnEdit" data-value="@item.ProdutoComandaID">Edit</a>*@
-                @Html.ActionLink("Edit", "Edit", new { id = item.ProdutoComandaID }, htmlAttributes: new { @class = "btn btn-default btnEdit" }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ProdutoComandaID }, htmlAttributes: new { @class = "btn btn-default btnEdit" } ) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ProdutoComandaID }, htmlAttributes: new { @class = "btn btn-danger btnEdit" } )
+                @ViewBag.nomeUsuarioLog
+            </td>
+            <td>
+                R$ @Html.DisplayFor(modelItem => item.Produto.Preco)
+            </td>
+            <td>
+                R$ @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProdutoComandaID }, htmlAttributes: new { @class = "btn btn-default" }) |
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.ProdutoComandaID }, htmlAttributes: new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

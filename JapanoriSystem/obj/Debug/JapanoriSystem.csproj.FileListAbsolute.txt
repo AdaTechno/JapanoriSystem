@@ -157,7 +157,16 @@ C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\bin\PagedList.dll
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\bin\PagedList.Mvc.dll
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\bin\PagedList.xml
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\bin\PagedList.Mvc.xml
-C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.csprojAssemblyReference.cache
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.Init2.resources
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.csproj.GenerateResource.cache
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.RemoveColumnPrecoTotal.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.New.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.AddColumnValorTotal.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.New1.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.ComandaValorTotal.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.cDesc.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.NewMigrationVendas.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.AlterColumn.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.AlterColumn1.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.Att.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.teste.resources

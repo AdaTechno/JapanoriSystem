@@ -31,8 +31,10 @@ namespace JapanoriSystem.Models
         [DisplayName("Situação")]
         public string Situacao { get; set; }
 
-        [DisplayName("Status")]
-        public string Status { get; set; }
+        [DisplayName("cStatus")]
+        public string cStatus { get; set; }
+
+        public double ValorTotal { get; set; }
 
         [DisplayName("Produtos")]
         public virtual ICollection<ProdutoComanda> Produtos { get; set; }
@@ -47,11 +49,12 @@ namespace JapanoriSystem.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProdutoID { get; set; }
         public string Nome { get; set; }
-        public string Desc { get; set; }
+        public string cDesc { get; set; }
+
         [DisplayName("Valor Unitário")]
         public double Preco { get; set; }
 
-        public string Status { get; set; }
+        public string cStatus { get; set; }
 
         [DisplayName("Itens do Estoque")]
         public virtual ICollection<EstoqueProduto> EstoqueItens { get; set; }
@@ -65,30 +68,46 @@ namespace JapanoriSystem.Models
     public class ProdutoComanda
     {
         [Key]
+        [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProdutoComandaID { get; set; }
-        [Column(Order = 1)]
+        [Column(Order = 2)]
         [ForeignKey("Comanda")]
         public int ComandaID { get; set; }
 
-        [Column(Order = 2)]
+        [Column(Order = 3)]
         [ForeignKey("Produto")]
         public int ProdutoID { get; set; }
-        [DefaultValue("1")]
-        public int Quantidade { get; set; }
-        public string Status { get; set; }
+
+        [Column(Order = 4)]
+        public int? Quantidade { get; set; }
+
+        [Column(Order = 5)]
+        public string cStatus { get; set; }
+
+        [Column(Order = 6)]
+        public double ValorTotal { get; set; }
+
         public virtual Comanda Comanda { get; set; }
         public virtual Produto Produto { get; set; }
         public virtual ICollection<ProdutoComandaVendas> ProdutoComandaVendas { get; set; }
+
     }
+
 
     [Table("tbVendas")]
     public class Vendas
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VendaID { get; set; }
         public string NomeFuncionario { get; set; }
+
+        [DisplayName("Forma de Pagamento")]
+        public string FormaPag { get; set; }
+
+        public int Comanda { get; set; }
+        public double ValorTotal { get; set; }
+
         public virtual ICollection<ProdutoComandaVendas> ProdutoComandaVendas { get; set; }
 
     }
@@ -110,6 +129,9 @@ namespace JapanoriSystem.Models
 
         public virtual Vendas Vendas { get; set; }
         public virtual ProdutoComanda ProdutoComanda { get; set; }
+
+        [NotMapped]
+        public virtual ICollection<ProdutoComandaVendas> PCVendas { get; set; }
     }
 
 }

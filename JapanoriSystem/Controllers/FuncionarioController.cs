@@ -43,16 +43,15 @@ namespace JapanoriSystem.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FuncionarioID,Nome,Sobrenome,Cargo,CPF,Endereco,Cep,DataContratacao,EmailCorp,Senha,Perm,Status")] Funcionario funcionario)
+        public ActionResult Create([Bind(Include = "FuncionarioID,Nome,Sobrenome,Cargo,CPF,Endereco,Cep,DataContratacao,EmailCorp,Senha,Perm")] Funcionario funcionario)
         {
-            if (ModelState.IsValid)
-            {
+            
                 db.tbFuncionario.Add(funcionario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+           
 
-            return View(funcionario);
+            //return View(funcionario);
         }
 
         // GET: Funcionario/Edit/5
@@ -75,7 +74,7 @@ namespace JapanoriSystem.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FuncionarioID,Nome,Sobrenome,Cargo,CPF,Endereco,Cep,DataContratacao,EmailCorp,Senha,Perm,Status")] Funcionario funcionario)
+        public ActionResult Edit([Bind(Include = "FuncionarioID,Nome,Sobrenome,Cargo,CPF,Endereco,Cep,DataContratacao,EmailCorp,Senha,Perm,cStatus")] Funcionario funcionario)
         {
             if (ModelState.IsValid)
             {

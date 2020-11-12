@@ -70,23 +70,16 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Inserir", "Create", "Comanda")</li>
+                                <li>@Html.ActionLink("Inserir", "Inserir", "Comanda")</li>
                                 <li>@Html.ActionLink("Consultar", "Index", "Comanda")</li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Vendas
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                            </ul>
+                            @Html.ActionLink("Vendas", "Index", "Vendas")
                         </li>
-                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Caixa</a></li>
+                        <li>
+                            @Html.ActionLink("Caixa", "CaixaIDComanda", "Caixa")
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>

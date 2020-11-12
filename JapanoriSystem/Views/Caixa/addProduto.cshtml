@@ -1,0 +1,55 @@
+﻿@model JapanoriSystem.Models.ProdutoComanda
+
+
+@if (ViewBag.addProduto == null)
+{
+    using (Html.BeginForm())
+    {
+        <div class="hide">
+            @Html.TextBoxFor(model => model.ComandaID, htmlAttributes: new { id = "ComandaID", @class = "form-control", value = ViewBag.ID })
+        </div>
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+
+            <h3>Adicionar Produto</h3>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProdutoID, "ProdutoID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ProdutoID, htmlAttributes: new { id = "ProdutoID", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ProdutoID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>Quantidade</h4>
+                <div class="col-md-10">
+                    @Html.TextBox("Quant",1,htmlAttributes: new { id = "Quant", @class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Quantidade,"",htmlAttributes: new { @class="text-danger"})
+                </div>
+            </div>
+
+            @if (ViewBag.ConfirmErro != null)
+            {
+                <p>@ViewBag.MsgErro</p>
+            }
+            @if (ViewBag.ConfirmSuc != null)
+            {
+                <p>@ViewBag.MsgSuc</p>
+            }
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Caixa", new { id = ViewBag.ID })
+</div>
+

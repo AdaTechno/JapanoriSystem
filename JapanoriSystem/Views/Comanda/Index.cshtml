@@ -10,7 +10,8 @@
 <h2>Comandas</h2>
 
 <p>
-    @Html.ActionLink("Criar Nova", "Create")
+    @Html.ActionLink("Criar Nova", "Create") |
+    @Html.ActionLink("Inserir Produto em comanda existente","Inserir")
 </p>
 <br />
 @using (Html.BeginForm("Index", "Comanda", FormMethod.Get))
@@ -33,15 +34,12 @@
             @Html.ActionLink("Situação", "Index", new { sortOrder = ViewBag.SitSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            Quantidade de Produtos
+            Variedade de Produtos
         </th>
         <th>
-            Valor Total
+            @Html.ActionLink("Valor Total","Index", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
     </tr>
-    @{
-
-    }
     @foreach (var item in Model)
     {
         <tr>
@@ -53,20 +51,15 @@
             </td>
             <td>
                 @{
-                    string parameterValue = item.Produtos.Count().ToString();
+                    string parameterValue = item.Produtos.Where(i => i.cStatus == "Ativo").Count().ToString();
                 }
                 @Html.DisplayFor(modelItem => parameterValue)
             </td>
             <td>
-                @{
-                    string total1 = item.Produtos.Sum(x => x.Produto.Preco).ToString();
-                    string total = "R$ " + total1;
-                }
-                @Html.DisplayFor(modelItem => total)
+                R$ @Html.DisplayFor(modelItem => item.ValorTotal)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Ver mais", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Excluir", "Delete", new { id = item.ID })
             </td>
         </tr>

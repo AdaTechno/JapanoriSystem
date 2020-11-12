@@ -1,0 +1,53 @@
+﻿@model IEnumerable<JapanoriSystem.Models.Vendas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Histórico de Vendas</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VendaID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeFuncionario)
+        </th>
+        <th>
+            Comanda
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FormaPag)
+        </th>
+        <th>
+            Valor Total
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VendaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeFuncionario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comanda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormaPag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td>
+                @Html.ActionLink("Detalhes", "Details", new { id = item.VendaID })
+            </td>
+        </tr>
+    }
+
+</table>

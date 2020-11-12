@@ -16,6 +16,7 @@ using System.Data.Entity.Infrastructure;
 using System.Web.UI.WebControls;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Antlr.Runtime.Tree;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace JapanoriSystem.Controllers
 {
@@ -32,7 +33,7 @@ namespace JapanoriSystem.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.CodSortParm = String.IsNullOrEmpty(sortOrder) ? "cod_cre" : ""; // objeto que organiza a lista em ordem do código
             ViewBag.SitSortParm = String.IsNullOrEmpty(sortOrder) ? "sit_cre" : ""; // objeto que organiza a lista em ordem da situacao
-            ViewBag.PriceSortParm = String.IsNullOrEmpty(sortOrder) ? "preco_decre" : ""; // objeto que organiza a lista em ordem de preço
+            ViewBag.PriceSortParm = String.IsNullOrEmpty(sortOrder) ? "valor_decre" : ""; // objeto que organiza a lista em ordem de preço
 
             if (searchString != null)
             {
@@ -48,13 +49,12 @@ namespace JapanoriSystem.Controllers
             var comandas = from s in db.tbComanda
                            select s;
 
-            var produto = from cp in db.tbProduto
-                          select cp;
-
-
             if (!string.IsNullOrEmpty(searchString))
             {
-                comandas = comandas.Where(s => s.ID.ToString().Contains(searchString));
+                comandas = comandas.Where(s => 
+                                                s.ID.ToString().Contains(searchString) ||
+                                                s.Situacao.ToString().Contains(searchString)
+                                            );
             }
             switch (sortOrder)
             {
@@ -64,30 +64,16 @@ namespace JapanoriSystem.Controllers
                 case "sit_cre":
                     comandas = comandas.OrderBy(s => s.Situacao);
                     break;
+                case "valor_decre":
+                    comandas = comandas.OrderByDescending(s => s.ValorTotal);
+                    break;
                 default:
-                    comandas = comandas.OrderBy(s => s.ID);
+                    comandas = comandas.OrderByDescending(s => s.ValorTotal);
                     break;
             }
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(comandas.ToPagedList(pageNumber, pageSize));
-        }
-
-
-        //          Tela Detalhes
-        public ActionResult Details(int? id)
-        {
-            // Ação de redirecionar para Tela inicial Comandas se não retornar um ID para detalhar
-            if (id == null)
-            {
-                return RedirectToAction("Index", "Comanda");
-            }
-            Comanda comanda = db.tbComanda.Find(id); // Retorna em lista os dados da comanda que possuir o ID retornado ao sistema
-            if (comanda == null)
-            {
-                return RedirectToAction("Index", "Comanda");
-            }
-            return View(comanda);
         }
 
         //          Tela Criação
@@ -99,31 +85,42 @@ namespace JapanoriSystem.Controllers
         //      POST Tela Criação
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Situacao,Status")] Comanda comanda)
+        public ActionResult Create(int? comandaID)
         {
-            try
+
+            if (comandaID == null || comandaID < 100)
             {
-                if (ModelState.IsValid)
+                ViewBag.ConfErro = "1";
+                ViewBag.Erro = "Digite um número válido de pelo menos 3 dígitos";
+            }
+            if (comandaID != null && comandaID >= 100)
+            {
+                var param = db.tbComanda
+                                .Where(i => i.ID == comandaID)
+                                .ToList()
+                                .Count();
+
+                if (param > 0)
                 {
-                    db.tbComanda.Add(comanda);
+                    ViewBag.ConfErro = "2";
+                    ViewBag.Erro = "Já existe uma comanda com este código";
+                }
+                if (param == 0)
+                {
+                    ViewBag.addComanda = db.Database
+                                        .ExecuteSqlCommand("INSERT INTO tbComanda (ID, Situacao, cStatus, ValorTotal) " +
+                                                            "VALUES(" + comandaID + ", 'Vazia', 'On', 0)");
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    ViewBag.Success = "Comanda criada com sucesso";
                 }
             }
-            catch (DataException)
-            {
-                ModelState.AddModelError("", "Unable to save changes.");
-                ViewBag.Message = "Não foi possível Criar a comanda";
-            }
-            return View(comanda);
+
+            return View();
         }
 
         //      Tela Inserir 1
         public ActionResult Inserir()
         {
-            
-            //ViewBag.ComandaID = new SelectList(db.tbComanda, "ID", "ID");
-            ViewBag.ProdutoID = new SelectList(db.tbProduto, "ProdutoID", "Nome");
 
 
             return View();
@@ -131,138 +128,103 @@ namespace JapanoriSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Inserir([Bind(Include = "ComandaID,ProdutoID")] ProdutoComanda produtoComanda)
+        public ActionResult Inserir(int? ComandaID, int? Quant, int? ProdutoID)
         {
-            
-           
-            if (ModelState.IsValid)
+
+            if (ComandaID == null || ProdutoID == null || Quant == null)
             {
-                db.tbProdutoComanda.Add(produtoComanda);
-                db.SaveChanges();
-                ViewBag.Msg = "Produto inserido com sucesso!";
-                return RedirectToAction("Inserir");
+                ViewBag.ConfirmErro = "1";
+                ViewBag.MsgErro = "Não foi possível salvar as informações";
+            }
+            else
+            {
+
+                var param = db.tbProdutoComanda
+                                    .Where(i => i.ComandaID == ComandaID)
+                                    .Where(i => i.ProdutoID == ProdutoID)
+                                    .Where(i => i.cStatus == "Ativo")
+                                    .ToList()
+                                    .Count();
+                if (param > 0)
+                {
+                    ViewBag.UpProduto = db.Database
+                                            .ExecuteSqlCommand("UPDATE tbProdutoComanda " +
+                                                                "SET Quantidade = Quantidade + " + Quant + ", " +
+                                                                    "ValorTotal = (Quantidade+" + Quant + ")*(SELECT Preco " +
+                                                                                                        "FROM tbProduto " +
+                                                                                                        "WHERE ProdutoID = " + ProdutoID + "), " +
+                                                                    "cStatus = 'Ativo' " +
+                                                                "WHERE ComandaID = " + ComandaID + " and ProdutoID = " + ProdutoID);
+                    db.Database.ExecuteSqlCommand("UPDATE tbComanda " +
+                                                    "SET Situacao = 'Ativa', ValorTotal = (SELECT SUM(ValorTotal) " +
+                                                                                            "FROM tbProdutoComanda " +
+                                                                                            "WHERE ComandaID = " + ComandaID +
+                                                                                            " and cStatus = 'Ativo') " +
+                                                    "WHERE ID = " + ComandaID);
+
+                    db.SaveChanges();
+                    return RedirectToAction("Edit", new { id = ComandaID });
+                }
+                if (param == 0)
+                {
+                    ViewBag.addProduto = db.Database
+                                            .ExecuteSqlCommand("INSERT INTO tbProdutoComanda (ComandaID, ProdutoID, Quantidade, ValorTotal, cStatus) " +
+                                                                "VALUES(" + ComandaID + ", " + ProdutoID + ", " + Quant + ", (SELECT Preco*" + Quant +
+                                                                                                                            " FROM tbProduto " +
+                                                                                                                            "WHERE ProdutoID = " + ProdutoID + "), " +
+                                                                                                                            "'Ativo')");
+                    db.Database.ExecuteSqlCommand("UPDATE tbComanda " +
+                                                     "SET Situacao = 'Ativa', ValorTotal = (SELECT SUM(ValorTotal) " +
+                                                                                             "FROM tbProdutoComanda " +
+                                                                                             "WHERE ComandaID = " + ComandaID +
+                                                                                             " and cStatus = 'Ativo') " +
+                                                     "WHERE ID = " + ComandaID);
+
+                    db.SaveChanges();
+                    return RedirectToAction("Edit", new { id = ComandaID });
+                }
+
+
             }
 
-            //ViewBag.ComandaID = new SelectList(db.tbComanda, "ID", "ID", produtoComanda.ComandaID);
-            ViewBag.ProdutoID = new SelectList(db.tbProduto, "ProdutoID", "Nome", produtoComanda.ProdutoID);
-
-            return View(produtoComanda);
-        }
-
-        public JsonResult getProdutoByID(int id)
-        {
-            List<ProdutoComanda> list = new List<ProdutoComanda>();
-            list = db.tbProdutoComanda.Where(i => i.ComandaID == id).ToList();
-            return Json(new ListItem());
+            return View();
         }
 
 
         //          Tela Edição de Comanda
         public ActionResult Edit(int? id)
         {
+
             if (id == null)
             {
                 return RedirectToAction("Index", "Comanda");
             }
-
-            Comanda comanda = db.tbComanda
-                .Include(i => i.Produtos)
-                .Where(i => i.ID == id)
-                .Single();
-
-            PopulateAssignedProdutoData(comanda);
-
-            if (comanda == null)
+            else
             {
-                return RedirectToAction("Index", "Comanda");
+
+                var lista = db.tbProdutoComanda.Where(x => x.ComandaID == id).Where(x => x.cStatus == "Ativo").ToList();
+
+                ViewBag.ID = id;
+
+                string situacao = db.tbComanda
+                                    .Where(x => x.ID == id)
+                                    .Select(x => x.Situacao)
+                                    .Single();
+                ViewBag.Situacao = situacao;
+
+                var total = db.tbComanda
+                                .Where(x => x.ID == id)
+                                .Select(x => x.ValorTotal)
+                                .Single();
+                //double total = db.Database.ExecuteSqlCommand("SELECT ValorTotal FROM tbComanda WHERE ID = " + id); 
+                ViewBag.ValorTotal = total;
+
+                db.SaveChanges();
+                return View(lista);
             }
 
-            return View(comanda);
         }
 
-        private void PopulateAssignedProdutoData(Comanda comanda)
-        {
-            var allProdutos = db.tbProduto;
-            var ComandaProdutos = new HashSet<int>(comanda.Produtos.Select(c => c.ProdutoID));
-            var viewModel = new List<AssignedProdutoData>();
-            foreach (var produto in allProdutos)
-            {
-                viewModel.Add(new AssignedProdutoData
-                {
-                    ProdutoID = produto.ProdutoID,
-                    Nome = produto.Nome,
-                    Desc = produto.Desc,
-                    Preco = produto.Preco,
-                    Assigned = ComandaProdutos.Contains(produto.ProdutoID)
-                });
-            }
-            ViewBag.Produtos = viewModel;
-        }
-
-        //      POST Tela Edição de Comanda
-        /*[HttpPost, ActionName("Edit")]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditConfirmed(int? id, string[] selectedProdutos)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("Index", "Comanda");
-            }
-            var comandaToUpdate = db.tbComanda
-               .Include(i => i.Produtos)
-               .Where(i => i.ID == id)
-               .Single();
-
-            if (TryUpdateModel(comandaToUpdate, "",
-               new string[] { "ID", "Situacao" }))
-            {
-                try
-                {
-                    UpdateComandaProdutos(selectedProdutos, comandaToUpdate);
-
-                    db.SaveChanges();
-
-                    return RedirectToAction("Index");
-                }
-                catch (RetryLimitExceededException )
-                {
-                    //Log the error (uncomment dex variable name and add a line here to write a log.
-                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-                }
-            }
-            PopulateAssignedProdutoData(comandaToUpdate);
-            return View(comandaToUpdate);
-        }
-
-        private void UpdateComandaProdutos(string[] selectedProdutos, Comanda comandaToUpdate)
-        {
-            if (selectedProdutos == null)
-            {
-                comandaToUpdate.Produtos = new ICollection<Produto>();
-                return;
-            }
-
-            var selectedProdutosHS = new HashSet<string>(selectedProdutos);
-            var ComandaProdutos = new HashSet<int>
-                (comandaToUpdate.Produtos.Select(c => c.ProdutoID));
-            foreach (var produto in db.tbProduto)
-            {
-                if (selectedProdutosHS.Contains(produto.ProdutoID.ToString()))
-                {
-                    if (!ComandaProdutos.Contains(produto.ProdutoID))
-                    {
-                        comandaToUpdate.Produtos.Add(produto);
-                    }
-                }
-                else
-                {
-                    if (ComandaProdutos.Contains(produto.ProdutoID))
-                    {
-                        comandaToUpdate.Produtos.Remove(produto);
-                    }
-                }
-            }
-        }*/
 
         //          Tela Excluir dados da Comanda
         public ActionResult Delete(int? id)

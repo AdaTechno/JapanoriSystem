@@ -1,0 +1,60 @@
+﻿@model IEnumerable<JapanoriSystem.Models.ProdutoComandaVendas>
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Vendas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vendas.NomeFuncionario)
+        </dt>
+
+        <dd>
+            @ViewBag.NomeFunc
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vendas.FormaPag)
+        </dt>
+
+        <dd>
+            @ViewBag.FormaPag
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Vendas.Comanda)
+        </dt>
+        <dd>
+            @ViewBag.Comanda
+        </dd>
+    </dl>
+    <br />
+    <table class="table">
+        <tr>
+            <th>Nome do Produto</th>
+            <th>Quantidade</th>
+            <th>Valor Unitário</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdutoComanda.Produto.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdutoComanda.Quantidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdutoComanda.Produto.Preco)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,10 +1,7 @@
 ﻿@model JapanoriSystem.Models.Produto
 
-@{
-    ViewBag.Title = "Details";
-}
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
     <h4>Produto &nbsp; @Html.DisplayFor(model => model.ProdutoID)</h4>
@@ -19,11 +16,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Desc)
+            @Html.DisplayNameFor(model => model.cDesc)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Desc)
+            @Html.DisplayFor(model => model.cDesc)
         </dd>
 
         <dt>
@@ -34,13 +31,6 @@
             @Html.DisplayFor(model => model.Preco)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
 
     </dl>
 </div>

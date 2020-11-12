@@ -14,13 +14,13 @@ namespace JapanoriSystem.DAL
             // Insert de Comandas no banco de dados
             var comandas = new List<Comanda>
             {
-            new Comanda{ID=1000,Situacao="Ativa",Status="On"},
-            new Comanda{ID=1010,Situacao="Ativa",Status="On"},
-            new Comanda{ID=1020,Situacao="Ativa",Status="On"},
-            new Comanda{ID=1030,Situacao="Ativa",Status="On"},
-            new Comanda{ID=1040,Situacao="Vazia",Status="On"},
-            new Comanda{ID=1050,Situacao="Vazia",Status="On"},
-            new Comanda{ID=1060,Situacao="Vazia",Status="On"},
+            new Comanda{ID=1000,Situacao="Ativa",cStatus="On"},
+            new Comanda{ID=1010,Situacao="Ativa",cStatus="On"},
+            new Comanda{ID=1020,Situacao="Ativa",cStatus="On"},
+            new Comanda{ID=1030,Situacao="Ativa",cStatus="On"},
+            new Comanda{ID=1040,Situacao="Vazia",cStatus="On"},
+            new Comanda{ID=1050,Situacao="Vazia",cStatus="On"},
+            new Comanda{ID=1060,Situacao="Vazia",cStatus="On"},
             };
             comandas.ForEach(s => context.tbComanda.Add(s));
             context.SaveChanges();
@@ -28,9 +28,9 @@ namespace JapanoriSystem.DAL
             // Insert de Produtos no banco de dados
             var produtos = new List<Produto>
             {
-            new Produto{Nome="Combo Sushi 40 Peças",Desc="15 Uramaki, 15 Hossomaki, 10 Hot Rolls",Preco=40.00,Status="On"}, //ID = 1
-            new Produto{Nome="Combo Sushi 20 Peças",Desc="15 Uramaki, 5 Hot Rolls",Preco=25.00,Status="On"}, //ID = 2
-            new Produto{Nome="Coca-Cola Lata 350ml",Desc="Coca-Cola Lata 350ml",Preco=6.00,Status="On"}, //ID = 3
+            new Produto{Nome="Combo Sushi 40 Peças",cDesc="15 Uramaki, 15 Hossomaki, 10 Hot Rolls",Preco=40.00,cStatus="On"}, //ID = 1
+            new Produto{Nome="Combo Sushi 20 Peças",cDesc="15 Uramaki, 5 Hot Rolls",Preco=25.00,cStatus="On"}, //ID = 2
+            new Produto{Nome="Coca-Cola Lata 350ml",cDesc="Coca-Cola Lata 350ml",Preco=6.00,cStatus="On"}, //ID = 3
             };
             produtos.ForEach(s => context.tbProduto.Add(s));
             context.SaveChanges();
@@ -54,10 +54,10 @@ namespace JapanoriSystem.DAL
             // Insert de Itens do Estoque no banco de dados
             var itens = new List<Estoque>
             {
-            new Estoque{Nome="Coca-Cola Lata 350ml",Quantidade=50,TipoQuantidade=TipoQuantidade.Unidades,UltimoCarregamento=DateTime.Parse("2020-10-26"),Status="On"},
-            new Estoque{Nome="Salmão",Quantidade=30,TipoQuantidade=TipoQuantidade.Quilos,UltimoCarregamento=DateTime.Parse("2020-10-26"),Status="On"},
-            new Estoque{Nome="Alga Marinha",Quantidade=10,TipoQuantidade=TipoQuantidade.Quilos,UltimoCarregamento=DateTime.Parse("2020-10-26"),Status="On"},
-            new Estoque{Nome="Cream Cheese",Quantidade=5,TipoQuantidade=TipoQuantidade.Litros,UltimoCarregamento=DateTime.Parse("2020-10-26"),Status="On"}
+            new Estoque{Nome="Coca-Cola Lata 350ml",Quantidade=50,TipoQuantidade=TipoQuantidade.Unidades,UltimoCarregamento=DateTime.Parse("2020-10-26"),cStatus="On"},
+            new Estoque{Nome="Salmão",Quantidade=30,TipoQuantidade=TipoQuantidade.Quilos,UltimoCarregamento=DateTime.Parse("2020-10-26"),cStatus="On"},
+            new Estoque{Nome="Alga Marinha",Quantidade=10,TipoQuantidade=TipoQuantidade.Quilos,UltimoCarregamento=DateTime.Parse("2020-10-26"),cStatus="On"},
+            new Estoque{Nome="Cream Cheese",Quantidade=5,TipoQuantidade=TipoQuantidade.Litros,UltimoCarregamento=DateTime.Parse("2020-10-26"),cStatus="On"}
             };
             itens.ForEach(s => context.tbEstoque.Add(s));
             context.SaveChanges();
@@ -89,7 +89,7 @@ namespace JapanoriSystem.DAL
                     EmailCorp="gustavo@japanori.com.br",
                     Senha="japanori123",
                     Perm="Admin",
-                    Status="On"}
+                    cStatus="On"}
             };
             funcionarios.ForEach(s => context.tbFuncionario.Add(s));
             context.SaveChanges();

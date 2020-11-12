@@ -24,7 +24,7 @@ namespace JapanoriSystem.Models
         [DisplayName("Último carregamento")]
         public DateTime UltimoCarregamento { get; set; }
         public string Obs { get; set; }
-        public string Status { get; set; }
+        public string cStatus { get; set; }
 
         public virtual ICollection<EstoqueProduto> Produtos { get; set; }
     }
