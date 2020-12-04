@@ -248,12 +248,10 @@
     <Compile Include="Controllers\CaixaController.cs" />
     <Compile Include="Controllers\ComandaController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
-    <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutoComandasController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
-    <Compile Include="Controllers\ReservaController.cs" />
     <Compile Include="Controllers\VendasController.cs" />
     <Compile Include="DAL\bdJapanoriContext.cs" />
     <Compile Include="DAL\bdJapanoriInitializer.cs" />
@@ -391,6 +389,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\prototype.js" />
+    <Content Include="Source\add-64.png" />
+    <Content Include="Source\list-text.png" />
+    <Content Include="Source\Logo-japa.png" />
     <Content Include="Source\Ondas_fundo.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -406,13 +407,10 @@
     <Content Include="Views\Home\Inicio.cshtml" />
     <Content Include="Views\Conta\Login.cshtml" />
     <Content Include="Views\Conta\Logout.cshtml" />
-    <Content Include="Views\Reserva\Cadastro.cshtml" />
-    <Content Include="Views\Reserva\Consulta.cshtml" />
     <Content Include="Views\Comanda\Create.cshtml" />
     <Content Include="Views\Comanda\Delete.cshtml" />
     <Content Include="Views\Comanda\Edit.cshtml" />
     <Content Include="Views\Comanda\Index.cshtml" />
-    <Content Include="Views\Fornecedor\Cadastro.cshtml" />
     <Content Include="Views\Conta\semAcesso.cshtml" />
     <Content Include="Views\Produto\Create.cshtml" />
     <Content Include="Views\Produto\Delete.cshtml" />

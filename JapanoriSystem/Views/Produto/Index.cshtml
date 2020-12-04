@@ -7,12 +7,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="barra">
 
-<p>
-    @Html.ActionLink("Criar Novo", "Create")
-</p>
-<br />
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/list-text.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Produtos</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+
 @using (Html.BeginForm("Index", "Produto", FormMethod.Get))
 {
     <table>
@@ -60,7 +68,7 @@
     }
 
 </table>
-<br />
+
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Index",

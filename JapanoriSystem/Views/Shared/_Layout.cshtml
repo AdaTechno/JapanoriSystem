@@ -26,6 +26,12 @@
                 @if (!(Session["usuarioLogado"] == null) || !(Session["senhaLogado"] == null))
                 {
                     <ul class="nav navbar-nav">
+                        <li>
+
+                            <img style="margin-top: 2px; width: 44px; height: 44px;" class="logo-japa" src="~/Source/Logo-japa.png" />
+
+
+                        </li>
                         <li>@Html.ActionLink("Início", "Inicio", "Home")</li>
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -33,37 +39,26 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Reserva", "Cadastro", "Reserva")</li>
+
                                 <li>@Html.ActionLink("Produto", "Create", "Produto")</li>
                                 <li>@Html.ActionLink("Funcionário", "Create", "Funcionario")</li>
-                                <li><a href="#">Fornecedor</a></li>
+                                <li>@Html.ActionLink("Comanda", "Create", "Comanda")</li>
                             </ul>
                         </li>
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Consulta
+                                Consultar
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Reservas", "Consulta", "Reserva")</li>
-                                <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
-                                <li>@Html.ActionLink("Funcionário", "Index", "Funcionario")</li>
-                                <li><a href="#">Fornecedor</a></li>
-                                <li><a href="#">Cardápio</a></li>
+
+                                <li>@Html.ActionLink("Produtos", "Index", "Produto")</li>
+                                <li>@Html.ActionLink("Funcionários", "Index", "Funcionario")</li>
+                                <li>@Html.ActionLink("Comandas", "Index", "Comanda")</li>
+
                             </ul>
                         </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Estoque
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                            </ul>
-                        </li>
+
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 Comanda
@@ -107,10 +102,6 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Japanori ASP.NET</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

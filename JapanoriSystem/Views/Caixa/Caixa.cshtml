@@ -25,9 +25,11 @@
         @ViewBag.Total2
     }
 </h3>
-
-    @Html.ActionLink("Adicionar", "addProduto", new { id = ViewBag.ID }, htmlAttributes: new { @class = "btn btn-success" }) | 
+@if (ViewBag.ID != 0)
+{
+    @Html.ActionLink("Adicionar", "addProduto", new { id = ViewBag.ID }, htmlAttributes: new { @class = "btn btn-success" })
     @Html.ActionLink("Finalizar", "Finalizar", new { id = ViewBag.ID }, htmlAttributes: new { @class = "btn btn-success" })
+}
 
 @if (ViewBag.ID == 0)
 {

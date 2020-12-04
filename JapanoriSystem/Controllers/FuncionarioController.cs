@@ -43,7 +43,7 @@ namespace JapanoriSystem.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FuncionarioID,Nome,Sobrenome,Cargo,CPF,Endereco,Cep,DataContratacao,EmailCorp,Senha,Perm")] Funcionario funcionario)
+        public ActionResult Create([Bind(Include = "FuncionarioID,Nome,Sobrenome,DataNasc,Cargo,CPF,Endereco,NumeroEnd,Cep,DataContratacao,EmailCorp,Senha,Perm,cStatus")] Funcionario funcionario)
         {
             
                 db.tbFuncionario.Add(funcionario);

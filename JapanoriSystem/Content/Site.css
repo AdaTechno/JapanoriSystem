@@ -26,3 +26,45 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* LOGO JAPA */
+
+/*li img.logo-japa{
+    margin-top:2px;
+    width:44px;
+    height:44px;
+}*/
+
+/* Área vermelha para Título da View */
+
+div.barra {
+    position:static;
+    width: 85%;
+    left: 225px;
+    margin-top: 4%;
+    margin-left:auto;
+    margin-bottom:23px;
+    margin-right:auto;
+}
+
+    .barra-fundo {
+        height: 50px;
+        padding-left: 10px;
+        background: linear-gradient(180deg, #F32929 0%, #BA1010 100%);
+        /* Shadow */
+        /*box-shadow: 1px 4px 10px rgba(219, 33, 33, 0.3);*/
+        border-radius: 3px;
+    }
+
+    /*.barra-fundo h3{
+        position:absolute;
+        margin-top:12px;
+        width: 300px;
+    }*/
+
+    /*.barra-fundo li img{
+        margin-top:5px;
+        width:40px;
+        height:40px;
+    }*/
+    
