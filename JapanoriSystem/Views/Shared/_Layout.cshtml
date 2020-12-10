@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+    <title>@ViewBag.Title - Japanori</title>
     <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -20,6 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                
                 @Html.ActionLink("JAPANORI", "Inicio", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
@@ -27,10 +28,7 @@
                 {
                     <ul class="nav navbar-nav">
                         <li>
-
                             <img style="margin-top: 2px; width: 44px; height: 44px;" class="logo-japa" src="~/Source/Logo-japa.png" />
-
-
                         </li>
                         <li>@Html.ActionLink("Início", "Inicio", "Home")</li>
                         <li>
@@ -83,8 +81,7 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Perfil</a></li>
-                                <li><a href="#">Sobre</a></li>
+                                <li>@Html.ActionLink("Perfil","Perfil","Conta")</li>
                                 <li>@Html.ActionLink("Sair", "Logout", "Conta")</li>
 
                             </ul>
@@ -100,7 +97,7 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="width:80%;">
         @RenderBody()
     </div>
 

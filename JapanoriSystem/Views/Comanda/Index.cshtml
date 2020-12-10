@@ -4,7 +4,7 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Lista de Comandas";
+    ViewBag.Title = "Comandas";
 }
 
 <div class="barra">
@@ -19,17 +19,14 @@
     </div>
 
 </div>
-
-<p>
-    @Html.ActionLink("Criar Nova", "Create") |
-    @Html.ActionLink("Inserir Produto em comanda existente","Inserir")
-</p>
 <br />
+
+
 @using (Html.BeginForm("Index", "Comanda", FormMethod.Get))
 {
     <table>
         <tr>
-            <th>Código da Comanda: </th>
+            <th><h4>Código da Comanda:</h4> </th> &nbsp; &nbsp;
             <th>@Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })</th>
             <th><input type="submit" value="Search" class="btn btn-default" /></th>
         </tr>
@@ -48,7 +45,7 @@
             Variedade de Produtos
         </th>
         <th>
-            @Html.ActionLink("Valor Total","Index", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Valor Total", "Index", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
     </tr>
     @foreach (var item in Model)
@@ -70,15 +67,23 @@
                 R$ @Html.DisplayFor(modelItem => item.ValorTotal)
             </td>
             <td>
-                @Html.ActionLink("Ver mais", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Excluir", "Delete", new { id = item.ID })
+                @Html.ActionLink("Ver mais", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Excluir", "Delete", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-danger" })
             </td>
         </tr>
     }
 
 </table>
-<br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+<div>
+    <div>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+    <div>
+        @Html.ActionLink("Criar Nova", "Create", "", htmlAttributes: new { @class = "btn btn-success" }) |
+        @Html.ActionLink("Inserir Produto em comanda existente", "Inserir", "", htmlAttributes: new { @class = "btn btn-default" })
+    </div>
+
+</div>

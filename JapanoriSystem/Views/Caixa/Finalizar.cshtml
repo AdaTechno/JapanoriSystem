@@ -1,5 +1,30 @@
 ﻿@model JapanoriSystem.Models.ProdutoComandaVendas
 
+@{
+    ViewBag.Title = "Finalizar";
+}
+
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/cashier-machine.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Finalizar Compra</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
+<br />
+<br />
+
+<hr />
+
+<br />
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -27,7 +52,7 @@
                                                                             new SelectListItem{Text = "Dinheiro", Value = "Dinheiro"},
                                                                             new SelectListItem{Text = "Cartão de Crédito", Value = "Cartão de Crédito"},
                                                                             new SelectListItem{Text = "Cheque", Value = "Cheque"}
-                                                                        }, new { @class = "form-control"})
+                                                                        }, new { @class = "form-control" })
             </div>
         </div>
     </div>

@@ -4,7 +4,20 @@
     ViewBag.Title = "Detalhes";
 }
 
-<h2>Detalhes</h2>
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/edit(2).png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Detalhes Funcionário</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
 
 <div>
     <h4>Funcionario &nbsp; @Html.DisplayFor(model => model.FuncionarioID)</h4>
@@ -96,16 +109,17 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.cStatus)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Status)
+            @Html.DisplayFor(model => model.cStatus)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FuncionarioID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="form-actions no-color">
+    @Html.ActionLink("Editar","Edit",new { id = Model.FuncionarioID},htmlAttributes: new { @class ="btn btn-success"}) | 
+    @Html.ActionLink("Voltar para lista", "Index", "", htmlAttributes: new { @class = "btn btn-default" })
+
+</div>

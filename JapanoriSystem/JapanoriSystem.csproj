@@ -390,9 +390,21 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\prototype.js" />
     <Content Include="Source\add-64.png" />
+    <Content Include="Source\cashier-machine-red.png" />
+    <Content Include="Source\cashier-machine.png" />
+    <Content Include="Source\delete %281%29.png" />
+    <Content Include="Source\delete.png" />
+    <Content Include="Source\edit%282%29.png" />
+    <Content Include="Source\edit.png" />
+    <Content Include="Source\employee.png" />
+    <Content Include="Source\home.png" />
     <Content Include="Source\list-text.png" />
     <Content Include="Source\Logo-japa.png" />
+    <Content Include="Source\menu.png" />
+    <Content Include="Source\money-2-64.png" />
+    <Content Include="Source\money.png" />
     <Content Include="Source\Ondas_fundo.png" />
+    <Content Include="Source\shopping-list.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

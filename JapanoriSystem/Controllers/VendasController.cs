@@ -30,21 +30,23 @@ namespace JapanoriSystem.Controllers
             }
             var vendas = db.tbProdutoComandaVendas.Where(i => i.VendaID == id).ToList();
 
-            var NomeFunc = db.tbProdutoComandaVendas
+            ViewBag.idVenda = id;
+
+            var NomeFunc = db.tbVendas
                                         .Where(i => i.VendaID == id)
-                                        .Select(i => i.Vendas.NomeFuncionario)
+                                        .Select(i => i.NomeFuncionario)
                                         .Single();
             ViewBag.NomeFunc = NomeFunc;
 
-            var FormaPag = db.tbProdutoComandaVendas
+            var FormaPag = db.tbVendas
                                         .Where(i => i.VendaID == id)
-                                        .Select(i => i.Vendas.FormaPag)
+                                        .Select(i => i.FormaPag)
                                         .Single();
             ViewBag.FormaPag = FormaPag;
 
-            var Comanda = db.tbProdutoComandaVendas
+            var Comanda = db.tbVendas
                                         .Where(i => i.VendaID == id)
-                                        .Select(i => i.Vendas.Comanda)
+                                        .Select(i => i.Comanda)
                                         .Single();
             ViewBag.Comanda = Comanda;
 

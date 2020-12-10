@@ -1,6 +1,26 @@
 ﻿@model JapanoriSystem.Models.ProdutoComanda
 
 
+@{
+    ViewBag.Title = "Inserir";
+}
+
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/add-64.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Adicionar Produto</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+<br />
+<br />
+<hr />
+
 @if (ViewBag.addProduto == null)
 {
     using (Html.BeginForm())
@@ -8,8 +28,9 @@
         @Html.AntiForgeryToken()
         <div class="form-horizontal">
 
-            <h3>Adicionar Produto</h3>
-            <hr />
+
+
+            <br />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
             <div class="form-group">
@@ -44,17 +65,15 @@
             {
                 <p>@ViewBag.MsgSuc</p>
             }
-
+            <br />
+            <br />
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                <div class="">
+                    <input type="submit" value="Salvar" class="btn btn-success" /> |
+                    @Html.ActionLink("Voltar para Lista", "Index", "", htmlAttributes: new { @class = "btn btn-default" })
                 </div>
             </div>
         </div>
     }
 }
-
-<div>
-    @Html.ActionLink("Voltar", "Index")
-</div>
 

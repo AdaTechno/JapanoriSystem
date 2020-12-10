@@ -68,6 +68,7 @@ namespace JapanoriSystem.Models
         public string Perm { get; set; } //         Permissão
 
         [Required]
+        [DisplayName("Status")]
         public string cStatus {get; set;} //         cStatus (Lixeira)
     }
 

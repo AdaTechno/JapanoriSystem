@@ -170,3 +170,4 @@ C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\Japanor
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.AlterColumn1.resources
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.Att.resources
 C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.Migrations.teste.resources
+C:\Users\gusta\Documentos\GitHub\JapanoriSystem\JapanoriSystem\obj\Debug\JapanoriSystem.csprojAssemblyReference.cache

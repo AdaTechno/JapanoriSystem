@@ -75,9 +75,9 @@
         </td>
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FuncionarioID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FuncionarioID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FuncionarioID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.FuncionarioID },htmlAttributes: new { @class="btn btn-default"}) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.FuncionarioID },htmlAttributes: new { @class="btn btn-primary"}) |
+            @Html.ActionLink("Desligar", "Delete", new { id=item.FuncionarioID }, htmlAttributes: new { @class="btn btn-danger"})
         </td>
     </tr>
 }

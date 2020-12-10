@@ -2,8 +2,183 @@
     ViewBag.Title = "Início";
 }
 
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/home.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Tela Inicial</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
 <div class="row">
     <div class="col-md-4">
-        <h2>Olá @ViewBag.nomeCompletoLog </h2>
+        <h2>Olá, @ViewBag.nomeCompletoLog </h2>
     </div>
+</div>
+
+<hr />
+
+<br />
+
+<div style="width:85%;margin-left:auto;margin-right:auto;">
+    <ul style="display:block;list-style:none;margin-left:0px; margin-right:auto;padding-left:80px" class="nav navbar-nav">
+        <li style="position: relative;
+        background-color: white;
+        border-radius:5px;
+        width: 200px;
+        height: 200px;
+        margin-right: 30px;
+        margin-left: 30px;
+        margin-bottom: 60px;">
+
+            @* ESPAÇO COMANDA *@
+            <div style="text-align:center; padding:10px;">
+                <div style="margin-left:auto;margin-right:auto;">
+                    @* IMAGEM *@
+                    <img style="width:50px; height:50px;" src="~/Source/shopping-list.png" />
+                </div>
+                <div style="margin-left:auto;margin-right:auto;margin-top:5px;">
+                    @* NUMERO DE ITENS *@
+                    <h4 style="color:black;">@ViewBag.Comandas Itens</h4>
+                </div>
+                <div style="margin-left:auto;margin-right:auto;">
+                    @* TEXTO *@
+                    <h3 style="color:black;">Comandas</h3>
+                </div>
+                <div style="display:flex;width:auto;align-content:center">
+                    @* BOTÕES NAVEGAÇÃO *@
+                    <div style="margin: auto; background-color: #3CAB29;border-radius:40px; width: 50px; height: 50px;">
+                        <a href="https://localhost:44311/Comanda/Inserir">
+                            <img style="margin-top:4px;width:40px" ;height="40px" src="~/Source/add-64.png" />
+                        </a>
+                    </div>
+                    <div style="margin:auto; background-color: black;border-radius:40px; width: 50px; height: 50px;right:0;">
+                        <a href="https://localhost:44311/Comanda/Index">
+                            <img style="margin-top:5px;width:40px" ;height="40px" src="~/Source/list-text.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+        <li style="position: relative; background-color: white; border-radius: 5px; width: 200px; height: 200px; margin-right: 30px; margin-left: 30px; margin-bottom: 60px; ">
+
+            @* ESPAÇO FUNCIONÁRIO *@
+
+            <div style="text-align:center; padding:10px;">
+                <div style="margin-left:auto;margin-right:auto;">
+                    @* IMAGEM *@
+                    <img style="width:50px; height:50px;" src="~/Source/employee.png" />
+                </div>
+                <div style="margin-left:auto;margin-right:auto;margin-top:5px;">
+                    @* NUMERO DE ITENS *@
+                    <h4 style="color:black;">@ViewBag.Funcionarios Itens</h4>
+                </div>
+                <div style="margin-left:auto;margin-right:auto;">
+                    @* TEXTO *@
+                    <h3 style="color:black;">Funcionários</h3>
+                </div>
+                <div style="display:flex;width:auto;align-content:center">
+                    @* BOTÕES NAVEGAÇÃO *@
+                    <div style="margin: auto; background-color: #3CAB29;border-radius:40px; width: 50px; height: 50px;">
+                        <a href="https://localhost:44311/Funcionario/Create">
+                            <img style="margin-top:4px;width:40px" ;height="40px" src="~/Source/add-64.png" />
+                        </a>
+                    </div>
+                    <div style="margin:auto; background-color: black;border-radius:40px; width: 50px; height: 50px;right:0;">
+                        <a href="https://localhost:44311/Funcionario/Index">
+                            <img style="margin-top:5px;width:40px" ;height="40px" src="~/Source/list-text.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+        <li style="position: relative; background-color: white; border-radius: 5px; width: 200px; height: 200px; margin-right: 30px; margin-left: 30px; margin-bottom: 60px; ">
+
+            @* ESPAÇO PRODUTO *@
+
+            <div style="text-align:center; padding:10px;">
+                <div style="margin-left:auto;margin-right:auto;">
+                    @* IMAGEM *@
+                    <img style="width:50px; height:50px;" src="~/Source/menu.png" />
+                </div>
+                <div style="margin-left:auto;margin-right:auto;margin-top:5px;">
+                    @* NUMERO DE ITENS *@
+                    <h4 style="color:black;">@ViewBag.Produtos Itens</h4>
+                </div>
+                <div style="margin-left:auto;margin-right:auto;">
+                    @* TEXTO *@
+                    <h3 style="color:black;">Produtos</h3>
+                </div>
+                <div style="display:flex;width:auto;align-content:center">
+                    @* BOTÕES NAVEGAÇÃO *@
+                    <div style="margin: auto; background-color: #3CAB29;border-radius:40px; width: 50px; height: 50px;">
+                        <a href="https://localhost:44311/Produto/Create">
+                            <img style="margin-top:4px;width:40px" ;height="40px" src="~/Source/add-64.png" />
+                        </a>
+                    </div>
+                    <div style="margin:auto; background-color: black;border-radius:40px; width: 50px; height: 50px;right:0;">
+                        <a href="https://localhost:44311/Produto/Index">
+                            <img style="margin-top:5px;width:40px" ;height="40px" src="~/Source/list-text.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+        <li style="position: relative; background-color: white; border-radius: 5px; width: 200px; height: 200px; margin-right: 30px; margin-left: 30px; margin-bottom: 60px; ">
+
+            @* ESPAÇO VENDAS *@
+
+            <div style="text-align:center; padding:10px;">
+                <div style="margin-left:auto;margin-right:auto;">
+                    @* IMAGEM *@
+                    <img style="width:50px; height:50px;" src="~/Source/money-2-64.png" />
+                </div>
+                <div style="margin-left:auto;margin-right:auto;margin-top:5px;">
+                    @* NUMERO DE ITENS *@
+                    <h4 style="color:black;">@ViewBag.Vendas Itens</h4>
+                </div>
+                <div style="margin-left:auto;margin-right:auto;">
+                    @* TEXTO *@
+                    <h3 style="color:black;">Vendas</h3>
+                </div>
+                <div style="margin-left: auto; margin-right: auto;">
+                    @* BOTÕES NAVEGAÇÃO *@
+                    <div style="margin:auto; background-color: black;border-radius:40px; width: 50px; height: 50px;">
+                        <a href="https://localhost:44311/Vendas/Index">
+                            <img style="margin-top:5px;width:40px" ;height="40px" src="~/Source/list-text.png" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+        <li style="padding:10px;position: relative; background-color: white; border-radius: 5px; width: 200px; height: 200px; margin-right: 30px; margin-left: 30px; margin-bottom: 60px; ">
+
+            @* ESPAÇO CAIXA *@
+            <a href="https://localhost:44311/Caixa/CaixaIDComanda">
+                <div style="text-align:center; padding:10px;">
+                    <div style="margin-left:auto;margin-right:auto;">
+                        @* IMAGEM *@
+                        <img style="width:50px; height:50px;" src="~/Source/cashier-machine-red.png" />
+                    </div>
+
+                    <div style="margin-left:auto;margin-right:auto;">
+                        @* TEXTO *@
+                        <h2 style="color:black;">CAIXA</h2>
+                    </div>
+
+                </div>
+            </a>
+
+        </li>
+    </ul>
 </div>

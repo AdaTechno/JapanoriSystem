@@ -71,7 +71,7 @@ namespace JapanoriSystem.Controllers
                     comandas = comandas.OrderByDescending(s => s.ValorTotal);
                     break;
             }
-            int pageSize = 5;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
             return View(comandas.ToPagedList(pageNumber, pageSize));
         }

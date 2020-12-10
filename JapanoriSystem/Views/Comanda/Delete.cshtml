@@ -4,7 +4,20 @@
     ViewBag.Title = "Deletar";
 }
 
-<h2>Deletar</h2>
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/delete.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Excluir Comanda</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+<br />
+<br />
 
 <h3>Tem certeza que deseja excluir esta Comanda?</h3>
 <div>
@@ -20,21 +33,23 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.cStatus)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Status)
+            @Html.DisplayFor(model => model.cStatus)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
+        <br />
+        <br />
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Voltar para Lista", "Index","",htmlAttributes: new { @class ="btn btn-default"})
         </div>
     }
 </div>

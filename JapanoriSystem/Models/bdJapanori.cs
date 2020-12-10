@@ -31,7 +31,7 @@ namespace JapanoriSystem.Models
         [DisplayName("Situação")]
         public string Situacao { get; set; }
 
-        [DisplayName("cStatus")]
+        [DisplayName("Status")]
         public string cStatus { get; set; }
 
         public double ValorTotal { get; set; }
@@ -49,11 +49,14 @@ namespace JapanoriSystem.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProdutoID { get; set; }
         public string Nome { get; set; }
+
+        [DisplayName("Descrição")]
         public string cDesc { get; set; }
 
         [DisplayName("Valor Unitário")]
         public double Preco { get; set; }
 
+        [DisplayName("Status")]
         public string cStatus { get; set; }
 
         [DisplayName("Itens do Estoque")]
@@ -100,6 +103,8 @@ namespace JapanoriSystem.Models
     {
         [Key]
         public int VendaID { get; set; }
+
+        [DisplayName("Nome do Funcionário")]
         public string NomeFuncionario { get; set; }
 
         [DisplayName("Forma de Pagamento")]

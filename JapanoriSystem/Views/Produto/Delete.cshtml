@@ -4,15 +4,28 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/delete.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Excluir Produto</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
 
 <h3>Tem certeza que deseja excluir este produto?</h3>
 <div>
-    <h4>Produto &nbsp; @Html.DisplayFor(model => model.ProdutoID) </h4>
+    <h2>Produto &nbsp; @Html.DisplayFor(model => model.ProdutoID) </h2>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Nome do Produto 
+            Nome do Produto
         </dt>
 
         <dd>
@@ -37,12 +50,18 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <div class="form-actions no-color">
             <input type="submit" value="Excluir" class="btn btn-danger" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "Index","",htmlAttributes: new { @class="btn btn-default"})
         </div>
     }
 </div>

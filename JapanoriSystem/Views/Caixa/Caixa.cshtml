@@ -4,9 +4,22 @@
     ViewBag.Title = "Caixa";
 }
 
-<h2>Caixa</h2>
-<hr />
-<h1>
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/cashier-machine.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Caixa</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
+
+<h2>
     Comanda
     @if (ViewBag.ID != 0)
     {
@@ -16,7 +29,8 @@
     {
         @ViewBag.ID2
     }
-</h1>
+</h2>
+<hr />
 <h3>
     Total:
     R$ @ViewBag.Total
@@ -25,18 +39,8 @@
         @ViewBag.Total2
     }
 </h3>
-@if (ViewBag.ID != 0)
-{
-    @Html.ActionLink("Adicionar", "addProduto", new { id = ViewBag.ID }, htmlAttributes: new { @class = "btn btn-success" })
-    @Html.ActionLink("Finalizar", "Finalizar", new { id = ViewBag.ID }, htmlAttributes: new { @class = "btn btn-success" })
-}
 
-@if (ViewBag.ID == 0)
-{
-    @Html.ActionLink("Adicionar", "addProduto", new { id = ViewBag.ID2 }, htmlAttributes: new { @class = "btn btn-success" })
-    @Html.ActionLink("Finalizar", "Finalizar", new { id = ViewBag.ID2 }, htmlAttributes: new { @class = "btn btn-success" })
-}
-@ViewBag.teste
+
 <table class="table">
 
     <tr>
@@ -85,6 +89,27 @@
     }
 
 </table>
+@if (ViewBag.ID != 0)
+{
+    @Html.ActionLink("Adicionar", "addProduto", new { id = ViewBag.ID }, htmlAttributes: new { @class = "btn btn-success" })
+    
+} &nbsp;
+@if (ViewBag.ID != 0)
+{
+    
+    @Html.ActionLink("Finalizar", "Finalizar", new { id = ViewBag.ID }, htmlAttributes: new { @class = "btn btn-success" })
+}
+
+@if (ViewBag.ID == 0)
+{
+    @Html.ActionLink("Adicionar", "addProduto", new { id = ViewBag.ID2 }, htmlAttributes: new { @class = "btn btn-success" })
+    
+} &nbsp;
+@if (ViewBag.ID == 0)
+{
+    
+    @Html.ActionLink("Finalizar", "Finalizar", new { id = ViewBag.ID2 }, htmlAttributes: new { @class = "btn btn-success" })
+}
 
 @*<div class="modal" tabindex="-1" role="dialog" id="myModal">
         <div class="modal-dialog" role="document">

@@ -4,6 +4,20 @@
     ViewBag.Title = "Editar";
 }
 
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/edit(2).png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Editar Produto</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
 
 @if (ViewBag.UpdateProduto == null)
 {
@@ -15,7 +29,7 @@
         @Html.AntiForgeryToken()
         <div class="form-horizontal">
 
-            <h4>Editar Produto</h4>
+
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.ProdutoComandaID, htmlAttributes: new { id = "ProdutoComandaID" })
@@ -37,28 +51,28 @@
             @* === Quantidade === *@
 
             <div class="form-group">
-                    @Html.LabelFor(model => model.Quantidade, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Quantidade, new { htmlAttributes = new { @class = "form-control" } })
-                        
-                        @Html.ValidationMessageFor(model => model.Quantidade, "", new { @class = "text-danger" })
-                    </div>
+                @Html.LabelFor(model => model.Quantidade, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Quantidade, new { htmlAttributes = new { @class = "form-control" } })
+
+                    @Html.ValidationMessageFor(model => model.Quantidade, "", new { @class = "text-danger" })
                 </div>
+            </div>
             @if (ViewBag.ConfirmErro != null)
             {
                 <p>@ViewBag.MsgErro</p>
             }
-
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" @*onclick="PcUpdate()"*@ />
-                </div>
+
+                <input type="submit" value="Salvar" class="btn btn-success" @*onclick="PcUpdate()"*@ /> | 
+                @Html.ActionLink("Voltar", "Caixa", new { id = Model.ComandaID },htmlAttributes: new { @class="btn btn-default"})
             </div>
         </div>
     }
 }
-
-<div>
-    @Html.ActionLink("Voltar", "Caixa", new { id = Model.ComandaID })
-</div>
-

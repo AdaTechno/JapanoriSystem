@@ -4,14 +4,27 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/edit(2).png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Editar Produto</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Produto &nbsp; @Html.DisplayFor(model => model.ProdutoID)</h4>
+        <h2>Produto &nbsp; @Html.DisplayFor(model => model.ProdutoID)</h2>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ProdutoID)
@@ -39,15 +52,14 @@
                 @Html.ValidationMessageFor(model => model.Preco, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <br />
+        <br />
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+
+            <input type="submit" value="Salvar" class="btn btn-success" /> |
+            @Html.ActionLink("Voltar para Lista", "Index", "", htmlAttributes: new { @class = "btn btn-default" })
+
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

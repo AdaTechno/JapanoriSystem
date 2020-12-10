@@ -1,11 +1,26 @@
 ﻿@model IEnumerable<JapanoriSystem.Models.ProdutoComanda>
 
+@{
+    ViewBag.Title = "Deletar";
+}
 
+<div class="barra">
 
-<h2>Editar</h2>
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/list-text.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Detalhes Comanda</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+<br />
+<br />
 
 <div class="form-horizontal">
-    <h3>Comanda &nbsp; @ViewBag.ID</h3>
+    <h3>Comanda @ViewBag.ID</h3>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <dl class="dl-horizontal">
@@ -19,7 +34,7 @@
             Valor Total da Comanda
         </dt>
         <dd>
-            @ViewBag.ValorTotal
+            <h3>R$ @ViewBag.ValorTotal</h3>
         </dd>
     </dl>
     <table class="table">
@@ -50,6 +65,6 @@
 <br />
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para Lista", "Index", "", htmlAttributes: new { @class = "btn btn-default" })
 </div>
 

@@ -1,7 +1,23 @@
 ﻿@model JapanoriSystem.Models.ProdutoComanda
+
 @{
     ViewBag.Title = "Excluir";
 }
+
+<div class="barra">
+
+    <div class="barra-fundo">
+
+        <ul class="nav navbar-nav">
+            <li><img style="margin-top: 5px; width: 40px; height: 40px;" src="~/Source/delete.png" /></li>
+            <li><h3 style="position:absolute;width:300px;margin-top:12px;">Excluir Produto</h3></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<br />
 
 @if (ViewBag.DeleteProduto == null)
 {
@@ -13,16 +29,16 @@
         @Html.AntiForgeryToken()
         <div class="form-horizontal">
 
-            <h4>Tem certeza que deseja excluir este produto?</h4>
+            <h2>Tem certeza que deseja excluir este produto?</h2>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.ProdutoComandaID, htmlAttributes: new { id = "ProdutoComandaID" })
 
             <div class="form-group">
                 @*@Html.LabelFor(model => model.Produto, "ComandaID", htmlAttributes: new { @class = "control-label col-md-2" })*@
-                
+
                 <div class="col-md-10">
-                    <h4>Produto:</h4> 
+                    <h4>Produto:</h4>
                     @Html.DisplayFor(model => model.Produto.Nome)
                 </div>
             </div>
@@ -31,16 +47,17 @@
             {
                 <p>@ViewBag.MsgErro</p>
             }
-
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Excluir" class="btn btn-default" />
-                </div>
+
+                <input type="submit" value="Excluir" class="btn btn-danger" /> | 
+                @Html.ActionLink("Voltar", "Caixa", new { id = Model.ComandaID },htmlAttributes:new { @class="btn btn-default"})
             </div>
         </div>
     }
 }
-
-<div>
-    @Html.ActionLink("Voltar", "Caixa", new { id = Model.ComandaID })
-</div>

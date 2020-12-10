@@ -4,50 +4,54 @@
 }
 
 
-
-<br />
-<br />
 <br />
 
-<br />
-<div class="row"> Imagem Logo </div>
-<br />
+<div style="width:100%; text-align:center">
+    <div style=" margin-left:auto; margin-right:auto;">
+        <img style=" width:320px; height:347px;" src="~/Source/Logo-japa.png" />
 
-<br />
-<br />
-<br />
-@ViewBag.msgLogar
-@using (Html.BeginForm("Login", "Conta", FormMethod.Post))
-{
-    <fieldset>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(m => m.EmailCorp, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.EditorFor(m => m.EmailCorp, new
-                {
-                    htmlAttributes = new { id = "txtEmail", name = "txtEmail", type = "text", @class = "form-control", placeholder = "Digite seu Email", required = "required", maxlength = "100" }
-                })
-                @Html.ValidationMessageFor(m => m.EmailCorp, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Senha, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.EditorFor(m => m.Senha, new
-                {
-                    htmlAttributes = new { id = "txtSenha", name = "txtSenha", type = "password", @class = "form-control", placeholder = "Digite sua senha", required = "required", maxlength = "30" }
-                })
-                @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10 col-md-offset-2">
-                <input type="submit" class="btn btn-success" value="Entrar" />
-            </div>
-        </div>
-    </fieldset>
-}
+
+
+        <br />
+
+        <br />
+        @ViewBag.msgLogar
+        @using (Html.BeginForm("Login", "Conta", FormMethod.Post))
+        {
+            <fieldset style="text-align:center;">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div style="position:static;" class="">
+                    <p>Login</p>
+                    <div style="text-align:center" class="">
+                        @Html.EditorFor(m => m.EmailCorp, new
+                        {
+                            htmlAttributes = new { id = "txtEmail", name = "txtEmail", type = "text", placeholder = "Digite seu Email", required = "required", maxlength = "100" }
+                        })
+                        @Html.ValidationMessageFor(m => m.EmailCorp, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="">
+                    @Html.LabelFor(m => m.Senha, new { @class = "" })
+                    <div class="">
+                        @Html.EditorFor(m => m.Senha, new
+                        {
+                            htmlAttributes = new { id = "txtSenha", name = "txtSenha", type = "password", @class = "", placeholder = "Digite sua senha", required = "required", maxlength = "30" }
+                        })
+                        @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="form-group">
+                    <div class="">
+                        <input type="submit" class="btn btn-success" value="Entrar" />
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
